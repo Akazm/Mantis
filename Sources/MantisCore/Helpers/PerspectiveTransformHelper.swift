@@ -17,7 +17,7 @@ public enum RotationAdjustmentType: Int, CaseIterable {
     case horizontalSkew = 1
     case verticalSkew = 2
     
-    var localizedTitle: String {
+    public var localizedTitle: String {
         switch self {
         case .straighten:
             return LocalizedHelper.getString("Mantis.Straighten", value: "Straighten")
@@ -29,23 +29,23 @@ public enum RotationAdjustmentType: Int, CaseIterable {
     }
 }
 
-struct PerspectiveTransformHelper {
+public struct PerspectiveTransformHelper {
     /// Maximum skew angle in degrees
-    static let maxSkewDegrees: CGFloat = 30.0
+    public static let maxSkewDegrees: CGFloat = 30.0
     
     /// The perspective depth factor (m34). Smaller absolute values = more dramatic perspective.
-    static let perspectiveDepth: CGFloat = -1.0 / 500.0
+    public static let perspectiveDepth: CGFloat = -1.0 / 500.0
     
     /// The threshold angle (in degrees) beyond which we also translate the rotation axis
     /// to mimic Apple Photos app behavior
-    static let translateThresholdDegrees: CGFloat = 10.0
+    public static let translateThresholdDegrees: CGFloat = 10.0
     
     // MARK: - CATransform3D for real-time preview
     
     /// Computes a CATransform3D for horizontal skew (rotation around Y-axis).
     /// - Parameter degrees: The skew angle in degrees (negative = left, positive = right)
     /// - Returns: A CATransform3D with perspective
-    static func horizontalSkewTransform3D(degrees: CGFloat) -> CATransform3D {
+    public static func horizontalSkewTransform3D(degrees: CGFloat) -> CATransform3D {
         let radians = degrees * .pi / 180.0
         var transform = CATransform3DIdentity
         transform.m34 = perspectiveDepth
@@ -65,7 +65,7 @@ struct PerspectiveTransformHelper {
     /// Computes a CATransform3D for vertical skew (rotation around X-axis).
     /// - Parameter degrees: The skew angle in degrees (negative = up, positive = down)
     /// - Returns: A CATransform3D with perspective
-    static func verticalSkewTransform3D(degrees: CGFloat) -> CATransform3D {
+    public static func verticalSkewTransform3D(degrees: CGFloat) -> CATransform3D {
         let radians = degrees * .pi / 180.0
         var transform = CATransform3DIdentity
         transform.m34 = perspectiveDepth
@@ -90,7 +90,7 @@ struct PerspectiveTransformHelper {
     ///     is divided by this value so that the vanishing-plane distance grows
     ///     with zoom, preventing image corners from crossing behind the camera
     ///     at high zoom levels (which would produce NaN layer positions).
-    static func combinedSkewTransform3D(horizontalDegrees: CGFloat,
+    public static func combinedSkewTransform3D(horizontalDegrees: CGFloat,
                                         verticalDegrees: CGFloat,
                                         zoomScale: CGFloat = 1) -> CATransform3D {
         if horizontalDegrees == 0 && verticalDegrees == 0 {
@@ -149,7 +149,7 @@ struct PerspectiveTransformHelper {
     /// Assumes the input point lies on z = 0 (flat layer).
     ///
     /// Uses Core Animation's row-vector convention: `[x, y, 0, 1] * M`.
-    static func projectDisplacement(_ d: CGPoint, through t: CATransform3D) -> CGPoint {
+    public static func projectDisplacement(_ d: CGPoint, through t: CATransform3D) -> CGPoint {
         let px = d.x * t.m11 + d.y * t.m21 + t.m41
         let py = d.x * t.m12 + d.y * t.m22 + t.m42
         let w  = d.x * t.m14 + d.y * t.m24 + t.m44
@@ -164,7 +164,7 @@ struct PerspectiveTransformHelper {
     /// division flips the projected coordinates, making the resulting polygon
     /// degenerate.  Any containment test on such a polygon is meaningless,
     /// so callers should treat a `false` result as "invalid position".
-    static func allProjectionsInFrontOfCamera(_ corners: [CGPoint], through t: CATransform3D) -> Bool {
+    public static func allProjectionsInFrontOfCamera(_ corners: [CGPoint], through t: CATransform3D) -> Bool {
         let minW: CGFloat = 1e-4
         for d in corners {
             let w = d.x * t.m14 + d.y * t.m24 + t.m44
@@ -174,7 +174,7 @@ struct PerspectiveTransformHelper {
     }
     
     /// Recenters the projected quad so it stays aligned to the view center.
-    static func centeredTransform(
+    public static func centeredTransform(
         _ transform: CATransform3D,
         imageCornerDisplacements: [CGPoint],
         targetCenter: CGPoint,
@@ -219,7 +219,7 @@ struct PerspectiveTransformHelper {
     /// This replaces the previous cross-product convex polygon test, which
     /// failed when combined perspective rotations produced a slightly
     /// non-convex projected quad.
-    static func allPointsInsideConvexPolygon(
+    public static func allPointsInsideConvexPolygon(
         _ testPoints: [CGPoint],
         polygon: [CGPoint]
     ) -> Bool {
@@ -261,7 +261,7 @@ struct PerspectiveTransformHelper {
     ///   - visibleCornerDisplacements: Crop box corners as displacements from the same center.
     ///   - perspectiveTransform: The CATransform3D perspective rotation (without compensating scale).
     /// - Returns: Scale factor ≥ 1.0.
-    static func computeCompensatingScale(
+    public static func computeCompensatingScale(
         imageCornerDisplacements: [CGPoint],
         visibleCornerDisplacements: [CGPoint],
         perspectiveTransform: CATransform3D

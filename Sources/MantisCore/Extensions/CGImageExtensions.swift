@@ -12,7 +12,7 @@
 import Foundation
 import CoreGraphics
 
-enum ImageProcessError: Error {
+public enum ImageProcessError: Error {
     case noColorSpace
     case failedToBuildContext(colorSpaceModel: CGColorSpaceModel,
                               bitsPerPixel: Int,
@@ -20,7 +20,7 @@ enum ImageProcessError: Error {
 }
 
 extension CGImage {
-    func transformedImage(_ transform: CGAffineTransform,
+    public func transformedImage(_ transform: CGAffineTransform,
                           outputSize: CGSize,
                           cropSize: CGSize,
                           imageViewSize: CGSize) throws -> CGImage? {
@@ -81,7 +81,7 @@ extension CGImage {
         return context.makeImage()
     }
     
-    func createBackupCGContext(size: CGSize,
+    public func createBackupCGContext(size: CGSize,
                                bitmapBytesPerRow: Int = 0,
                                colorSpaceRef: CGColorSpace) -> CGContext? {
         var actualBitsPerComponent = bitsPerComponent

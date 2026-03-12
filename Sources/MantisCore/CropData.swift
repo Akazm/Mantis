@@ -26,17 +26,28 @@ import Foundation
 import CoreGraphics
 import QuartzCore
 
-struct CropState: Equatable {
-    var rotationType: ImageRotationType
-    var degrees: CGFloat
-    var aspectRatioLockEnabled: Bool
-    var aspectRato: CGFloat
-    var flipOddTimes: Bool
-    var transformation: Transformation
-    var horizontalSkewDegrees: CGFloat
-    var verticalSkewDegrees: CGFloat
+public struct CropState: Equatable {
+    public var rotationType: ImageRotationType
+    public var degrees: CGFloat
+    public var aspectRatioLockEnabled: Bool
+    public var aspectRato: CGFloat
+    public var flipOddTimes: Bool
+    public var transformation: Transformation
+    public var horizontalSkewDegrees: CGFloat
+    public var verticalSkewDegrees: CGFloat
     
-    static func == (lhs: CropState, rhs: CropState) -> Bool {
+    public init(rotationType: ImageRotationType, degrees: CGFloat, aspectRatioLockEnabled: Bool, aspectRato: CGFloat, flipOddTimes: Bool, transformation: Transformation, horizontalSkewDegrees: CGFloat, verticalSkewDegrees: CGFloat) {
+        self.rotationType = rotationType
+        self.degrees = degrees
+        self.aspectRatioLockEnabled = aspectRatioLockEnabled
+        self.aspectRato = aspectRato
+        self.flipOddTimes = flipOddTimes
+        self.transformation = transformation
+        self.horizontalSkewDegrees = horizontalSkewDegrees
+        self.verticalSkewDegrees = verticalSkewDegrees
+    }
+    
+    public static func == (lhs: CropState, rhs: CropState) -> Bool {
         return lhs.rotationType == rhs.rotationType
         && lhs.degrees == rhs.degrees
         && lhs.aspectRatioLockEnabled == rhs.aspectRatioLockEnabled
@@ -182,7 +193,7 @@ public struct CropInfo {
     }
 }
 
-typealias CropOutput = (
+public typealias CropOutput = (
     croppedImage: MantisImage?,
     transformation: Transformation,
     cropInfo: CropInfo

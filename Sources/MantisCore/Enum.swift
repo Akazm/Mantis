@@ -145,11 +145,11 @@ public enum FixedRatiosShowType {
     case vertical
 }
 
-enum RotateBy90DegreeType {
+public enum RotateBy90DegreeType {
     case clockwise
     case counterClockwise
     
-    mutating func toggle() {
+    public mutating func toggle() {
         if self == .clockwise {
             self = .counterClockwise
         } else {
@@ -163,7 +163,7 @@ public enum CropAuxiliaryIndicatorStyleType {
     case transparent
 }
 
-enum CropViewAuxiliaryIndicatorHandleType: Int {
+public enum CropViewAuxiliaryIndicatorHandleType: Int {
     case none
     case topLeft
     case top
@@ -175,11 +175,11 @@ enum CropViewAuxiliaryIndicatorHandleType: Int {
     case left
 }
 
-enum AutoLayoutPriorityType: Float {
+public enum AutoLayoutPriorityType: Float {
     case high = 10000
     case low = 1
 }
 
-enum Constants {
-    static let rotationDegreeLimit: CGFloat = 45
+public enum Constants {
+    public static let rotationDegreeLimit: CGFloat = 45
 }

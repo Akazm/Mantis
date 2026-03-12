@@ -9,22 +9,22 @@
 import Foundation
 import CoreGraphics
 
-struct CropBoxFreeAspectFrameUpdater {
-    var minimumAspectRatio = CGFloat(0)
+public struct CropBoxFreeAspectFrameUpdater {
+    public var minimumAspectRatio = CGFloat(0)
     
     private var contentFrame = CGRect.zero
     private var cropOriginFrame = CGRect.zero
-    private(set) var cropBoxFrame = CGRect.zero
+    public private(set) var cropBoxFrame = CGRect.zero
     private var tappedEdge = CropViewAuxiliaryIndicatorHandleType.none
     
-    init(tappedEdge: CropViewAuxiliaryIndicatorHandleType, contentFrame: CGRect, cropOriginFrame: CGRect, cropBoxFrame: CGRect) {
+    public init(tappedEdge: CropViewAuxiliaryIndicatorHandleType, contentFrame: CGRect, cropOriginFrame: CGRect, cropBoxFrame: CGRect) {
         self.tappedEdge = tappedEdge
         self.contentFrame = contentFrame
         self.cropOriginFrame = cropOriginFrame
         self.cropBoxFrame = cropBoxFrame
     }
     
-    mutating func updateCropBoxFrame(xDelta: CGFloat, yDelta: CGFloat) {
+    public mutating func updateCropBoxFrame(xDelta: CGFloat, yDelta: CGFloat) {
         func newAspectRatioValid(withNewSize newSize: CGSize) -> Bool {
             return min(newSize.width, newSize.height) / max(newSize.width, newSize.height) >= minimumAspectRatio
         }

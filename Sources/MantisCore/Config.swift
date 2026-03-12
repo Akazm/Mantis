@@ -55,7 +55,7 @@ public struct Config {
     
     public private(set) var localizationConfig = Mantis.localizationConfig
     
-    var customRatios: [(width: Int, height: Int)] = []
+    public var customRatios: [(width: Int, height: Int)] = []
 
     static private var bundleIdentifier: String = {
         return "com.echo.framework.Mantis"
@@ -75,7 +75,7 @@ public struct Config {
     
     public var enableUndoRedo: Bool = false
     
-    static var language: Language?
+    public static var language: Language?
 
     public init() {}
 
@@ -89,11 +89,11 @@ public struct Config {
         customRatios.append((height, width))
     }
 
-    var hasCustomRatios: Bool {
+    public var hasCustomRatios: Bool {
         return !customRatios.isEmpty
     }
 
-    var customRatioItems: [RatioItemType?] {
+    public var customRatioItems: [RatioItemType?] {
         return customRatios.map {
             RatioItemType(nameH: String("\($0.width):\($0.height)"), ratioH: Double($0.width)/Double($0.height),
                           nameV: String("\($0.height):\($0.width)"), ratioV: Double($0.height)/Double($0.width))

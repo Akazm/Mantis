@@ -5,13 +5,8 @@
 //  Created by yingtguo on 12/15/22.
 //
 
-import Foundation
 import UIKit
-
-public protocol ActivityIndicatorProtocol: UIView {
-    func startAnimating()
-    func stopAnimating()
-}
+import MantisCore
 
 protocol CropViewProtocol: UIView {
     var image: UIImage { get set }

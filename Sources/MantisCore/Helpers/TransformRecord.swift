@@ -1,11 +1,11 @@
 import Foundation
 
-enum TransformType {
+public enum TransformType {
     case resetTransforms
     case transform
 }
 
-class TransformRecord: NSObject {
+public class TransformRecord: NSObject {
     
     private let transformType: TransformType
     
@@ -16,7 +16,7 @@ class TransformRecord: NSObject {
     
     private var useCurrent: Bool = true
     
-    init(transformType: TransformType, actionName: String, previousValues: [String: CropState], currentValues: [String: CropState]) {
+    public init(transformType: TransformType, actionName: String, previousValues: [String: CropState], currentValues: [String: CropState]) {
         
         self.transformType = transformType
         self.actionName = actionName
@@ -26,11 +26,11 @@ class TransformRecord: NSObject {
         super.init()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateTransformState() {
+    public func updateTransformState() {
         guard let transformDelegate = TransformStack.shared.transformDelegate else { return }
 
         guard let cropState = self.useCurrent ?
@@ -43,7 +43,7 @@ class TransformRecord: NSObject {
     }
     
     // Add/Redo
-    @objc func addAdjustmentToStack(_ applyTransform: NSNumber? = nil) {
+    @objc public func addAdjustmentToStack(_ applyTransform: NSNumber? = nil) {
         
         guard let transformDelegate = TransformStack.shared.transformDelegate else { return }
         
@@ -64,7 +64,7 @@ class TransformRecord: NSObject {
     }
     
     // Undo
-    @objc func removeAdjustmentFromStack() {
+    @objc public func removeAdjustmentFromStack() {
         
         guard let transformDelegate = TransformStack.shared.transformDelegate else { return }
         
@@ -91,5 +91,5 @@ class TransformRecord: NSObject {
 }
 
 extension String {
-    static let kCurrentTransformState = "CurrentTransformState"
+    public static let kCurrentTransformState = "CurrentTransformState"
 }

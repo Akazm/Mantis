@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-enum AppearanceColorPreset {
+public enum AppearanceColorPreset {
     
     private static let lightBackground = MantisColor(white: 0.95, alpha: 1.0)
     
@@ -30,7 +30,7 @@ enum AppearanceColorPreset {
     #endif
     
     // MARK: - Main Background (CropViewController / CropView)
-    static func mainBackground(for mode: AppearanceMode) -> MantisColor {
+    public static func mainBackground(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .black
@@ -42,7 +42,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - CropToolbarConfig
-    static func toolbarBackground(for mode: AppearanceMode) -> MantisColor {
+    public static func toolbarBackground(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .black
@@ -53,7 +53,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func toolbarForeground(for mode: AppearanceMode) -> MantisColor {
+    public static func toolbarForeground(for mode: AppearanceMode) -> MantisColor {
         let lightForeground = MantisColor(white: 0.1, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -66,7 +66,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - Dimming & Mask
-    static func dimmingOverlayColor(for mode: AppearanceMode) -> MantisColor {
+    public static func dimmingOverlayColor(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .black
@@ -77,7 +77,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func maskVisualEffectType(for mode: AppearanceMode) -> CropMaskVisualEffectType {
+    public static func maskVisualEffectType(for mode: AppearanceMode) -> CropMaskVisualEffectType {
         switch mode {
         case .forceDark:
             return .blurDark
@@ -89,7 +89,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - SlideDialConfig
-    static func slideDialScaleColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialScaleColor(for mode: AppearanceMode) -> MantisColor {
         let lightScale = MantisColor(white: 0.78, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -101,7 +101,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialMajorScaleColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialMajorScaleColor(for mode: AppearanceMode) -> MantisColor {
         let lightMajor = MantisColor(white: 0.55, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -113,7 +113,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialInactiveColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialInactiveColor(for mode: AppearanceMode) -> MantisColor {
         let lightInactive = MantisColor(white: 0.15, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -125,7 +125,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialRingColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialRingColor(for mode: AppearanceMode) -> MantisColor {
         let darkRing = MantisColor(white: 0.45, alpha: 1.0)
         let lightRing = MantisColor(white: 0.82, alpha: 1.0)
         switch mode {
@@ -138,7 +138,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialButtonFillColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialButtonFillColor(for mode: AppearanceMode) -> MantisColor {
         let darkFill = MantisColor(white: 0.2, alpha: 1.0)
         let lightFill = MantisColor.white
         switch mode {
@@ -151,7 +151,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialIconColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialIconColor(for mode: AppearanceMode) -> MantisColor {
         let lightIcon = MantisColor(white: 0.1, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -163,7 +163,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func slideDialCentralDotColor(for mode: AppearanceMode) -> MantisColor {
+    public static func slideDialCentralDotColor(for mode: AppearanceMode) -> MantisColor {
         let lightDot = MantisColor(white: 0.55, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -176,7 +176,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - RotationDialConfig
-    static func rotationDialTheme(for mode: AppearanceMode) -> RotationDialConfig.Theme {
+    public static func rotationDialTheme(for mode: AppearanceMode) -> RotationDialConfig.Theme {
         switch mode {
         case .forceDark:
             return .dark
@@ -188,7 +188,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - RotationTypeSelector
-    static func typeSelectorSelectedColor(for mode: AppearanceMode) -> MantisColor {
+    public static func typeSelectorSelectedColor(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .white
@@ -199,7 +199,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func typeSelectorUnselectedColor(for mode: AppearanceMode) -> MantisColor {
+    public static func typeSelectorUnselectedColor(for mode: AppearanceMode) -> MantisColor {
         let lightUnselected = MantisColor(white: 0.55, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -211,7 +211,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func typeSelectorIndicatorColor(for mode: AppearanceMode) -> MantisColor {
+    public static func typeSelectorIndicatorColor(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .white
@@ -223,7 +223,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - RatioItemView
-    static func ratioItemSelectedBackground(for mode: AppearanceMode) -> MantisColor {
+    public static func ratioItemSelectedBackground(for mode: AppearanceMode) -> MantisColor {
         let darkSelected = MantisColor.lightGray.withAlphaComponent(0.7)
         let lightSelected = MantisColor(white: 0.80, alpha: 1.0)
         switch mode {
@@ -236,7 +236,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func ratioItemUnselectedBackground(for mode: AppearanceMode) -> MantisColor {
+    public static func ratioItemUnselectedBackground(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .black
@@ -247,7 +247,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func ratioItemSelectedText(for mode: AppearanceMode) -> MantisColor {
+    public static func ratioItemSelectedText(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .white
@@ -258,7 +258,7 @@ enum AppearanceColorPreset {
         }
     }
     
-    static func ratioItemUnselectedText(for mode: AppearanceMode) -> MantisColor {
+    public static func ratioItemUnselectedText(for mode: AppearanceMode) -> MantisColor {
         let lightUnselected = MantisColor(white: 0.4, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -271,7 +271,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - Auto-adjust button
-    static func autoAdjustInactiveColor(for mode: AppearanceMode) -> MantisColor {
+    public static func autoAdjustInactiveColor(for mode: AppearanceMode) -> MantisColor {
         let lightInactive = MantisColor(white: 0.55, alpha: 1.0)
         switch mode {
         case .forceDark:
@@ -284,7 +284,7 @@ enum AppearanceColorPreset {
     }
     
     // MARK: - Activity Indicator
-    static func activityIndicatorColor(for mode: AppearanceMode) -> MantisColor {
+    public static func activityIndicatorColor(for mode: AppearanceMode) -> MantisColor {
         switch mode {
         case .forceDark:
             return .white

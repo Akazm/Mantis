@@ -8,7 +8,7 @@
 import Foundation
 
 extension CGAffineTransform {
-    mutating func transformed(by cropInfo: CropInfo) {
+    public mutating func transformed(by cropInfo: CropInfo) {
         self = translatedBy(x: cropInfo.translation.x, y: cropInfo.translation.y)
         self = rotated(by: cropInfo.rotation)
         self = scaledBy(x: cropInfo.scaleX, y: cropInfo.scaleY)

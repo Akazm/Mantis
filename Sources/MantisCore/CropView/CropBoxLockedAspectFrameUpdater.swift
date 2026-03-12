@@ -9,20 +9,20 @@
 import Foundation
 import CoreGraphics
 
-struct CropBoxLockedAspectFrameUpdater {
+public struct CropBoxLockedAspectFrameUpdater {
     private var contentFrame = CGRect.zero
     private var cropOriginFrame = CGRect.zero
-    private(set) var cropBoxFrame = CGRect.zero
+    public private(set) var cropBoxFrame = CGRect.zero
     private var tappedEdge = CropViewAuxiliaryIndicatorHandleType.none
 
-    init(tappedEdge: CropViewAuxiliaryIndicatorHandleType, contentFrame: CGRect, cropOriginFrame: CGRect, cropBoxFrame: CGRect) {
+    public init(tappedEdge: CropViewAuxiliaryIndicatorHandleType, contentFrame: CGRect, cropOriginFrame: CGRect, cropBoxFrame: CGRect) {
         self.tappedEdge = tappedEdge
         self.contentFrame = contentFrame
         self.cropOriginFrame = cropOriginFrame
         self.cropBoxFrame = cropBoxFrame
     }
     
-    mutating func updateCropBoxFrame(xDelta: CGFloat, yDelta: CGFloat) {
+    public mutating func updateCropBoxFrame(xDelta: CGFloat, yDelta: CGFloat) {
         var xDelta = xDelta
         var yDelta = yDelta
         

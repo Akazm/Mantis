@@ -10,19 +10,19 @@
 import Foundation
 import CoreGraphics
 
-final class RotationCalculator {
+public final class RotationCalculator {
     
     // midpoint for gesture recognizer
-    var midPoint = CGPoint.zero
+    public var midPoint = CGPoint.zero
     
     // minimal distance from midpoint
-    var innerRadius: CGFloat?
+    public var innerRadius: CGFloat?
     
     // maximal distance to midpoint
-    var outerRadius: CGFloat?
+    public var outerRadius: CGFloat?
     
     // relative rotation for current gesture (in radians)
-    var rotation: CGFloat? {
+    public var rotation: CGFloat? {
         guard let currentPoint = self.currentPoint,
             let previousPoint = self.previousPoint else {
             return nil
@@ -40,7 +40,7 @@ final class RotationCalculator {
     }
     
     // absolute angle for current gesture (in radians)
-    var angle: CGFloat? {
+    public var angle: CGFloat? {
         if let nowPoint = self.currentPoint {
             return self.angleForPoint(point: nowPoint)
         }
@@ -49,7 +49,7 @@ final class RotationCalculator {
     }
     
     // distance from midpoint
-    var distance: CGFloat? {
+    public var distance: CGFloat? {
         if let nowPoint = self.currentPoint {
             return self.distanceBetween(pointA: self.midPoint, andPointB: nowPoint)
         }
@@ -60,7 +60,7 @@ final class RotationCalculator {
     private var currentPoint: CGPoint?
     private var previousPoint: CGPoint?
     
-    init(midPoint: CGPoint) {
+    public init(midPoint: CGPoint) {
         self.midPoint = midPoint
     }
     
@@ -84,7 +84,7 @@ final class RotationCalculator {
         return angleForPoint(point: pointA) - angleForPoint(point: pointB)
     }
     
-    func getRotationRadians(byOldPoint point1: CGPoint, andNewPoint point2: CGPoint) -> CGFloat {
+    public func getRotationRadians(byOldPoint point1: CGPoint, andNewPoint point2: CGPoint) -> CGFloat {
         self.previousPoint = point1
         self.currentPoint = point2
         return rotation ?? 0

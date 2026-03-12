@@ -9,19 +9,19 @@ import Foundation
 import CoreGraphics
 import Vision
 
-class ImageAutoAdjustHelper {
-    var image: MantisImage!
-    var adjustAngle = Angle(radians: 0)
+public class ImageAutoAdjustHelper {
+    public var image: MantisImage!
+    public var adjustAngle = Angle(radians: 0)
     
-    init(image: MantisImage!) {
+    public init(image: MantisImage!) {
         self.image = image
     }
     
-    func detectHorizon() -> Bool {
+    public func detectHorizon() -> Bool {
         detectHorizon(in: image)
     }
     
-    func detectHorizon(in image: MantisImage) -> Bool {
+    public func detectHorizon(in image: MantisImage) -> Bool {
         guard let ciImage = CIImage(image: image) else {
             return false
         }

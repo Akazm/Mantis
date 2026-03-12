@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TransformDelegate: AnyObject {
+public protocol TransformDelegate: AnyObject {
     func getUndoManager() -> UndoManager
     func isUndoEnabled() -> Bool
     func isRedoEnabled() -> Bool

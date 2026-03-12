@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum ImageRotationType: CGFloat {
+public enum ImageRotationType: CGFloat {
     case none = 0
     case counterclockwise90 = -90
     case counterclockwise180 = -180
     case counterclockwise270 = -270
     
-    mutating func counterclockwiseRotate90() {
+    public mutating func counterclockwiseRotate90() {
         if self == .counterclockwise270 {
             self = .none
         } else {
@@ -22,7 +22,7 @@ enum ImageRotationType: CGFloat {
         }
     }
     
-    mutating func clockwiseRotate90() {
+    public mutating func clockwiseRotate90() {
         switch self {
         case .counterclockwise90:
             self = .none
@@ -35,13 +35,13 @@ enum ImageRotationType: CGFloat {
         }
     }
     
-    var isRotatedByMultiple180: Bool {
+    public var isRotatedByMultiple180: Bool {
         return self == .none || self == .counterclockwise180
     }
 }
 
-final class CropViewModel: CropViewModelProtocol {
-    init(
+public final class CropViewModel: CropViewModelProtocol {
+    public init(
         cropViewPadding: CGFloat,
         hotAreaUnit: CGFloat
     ) {
@@ -49,47 +49,47 @@ final class CropViewModel: CropViewModelProtocol {
         self.hotAreaUnit = hotAreaUnit
     }
 
-    var statusChanged: (_ status: CropViewStatus) -> Void = { _ in }
+    public var statusChanged: (_ status: CropViewStatus) -> Void = { _ in }
     
-    var viewStatus: CropViewStatus = .initial {
+    public var viewStatus: CropViewStatus = .initial {
         didSet {
             statusChanged(viewStatus)
         }
     }
     
-    var cropBoxFrameChanged: (_ frame: CGRect) -> Void = { _ in }
+    public var cropBoxFrameChanged: (_ frame: CGRect) -> Void = { _ in }
     
-    var cropBoxFrame = CGRect.zero {
+    public var cropBoxFrame = CGRect.zero {
         didSet {
             if oldValue != cropBoxFrame {
                 cropBoxFrameChanged(cropBoxFrame)
             }
         }
     }
-    var cropBoxOriginFrame = CGRect.zero
-    var panOriginPoint = CGPoint.zero
-    var tappedEdge = CropViewAuxiliaryIndicatorHandleType.none
+    public var cropBoxOriginFrame = CGRect.zero
+    public var panOriginPoint = CGPoint.zero
+    public var tappedEdge = CropViewAuxiliaryIndicatorHandleType.none
     
-    var degrees: CGFloat = 0
+    public var degrees: CGFloat = 0
     
-    var radians: CGFloat {
+    public var radians: CGFloat {
         degrees * CGFloat.pi / 180
     }
     
-    var rotationType: ImageRotationType = .none
-    var fixedImageRatio: CGFloat = -1    
-    var cropLeftTopOnImage = CGPoint.zero
-    var cropRightBottomOnImage = CGPoint(x: 1, y: 1)
+    public var rotationType: ImageRotationType = .none
+    public var fixedImageRatio: CGFloat = -1    
+    public var cropLeftTopOnImage = CGPoint.zero
+    public var cropRightBottomOnImage = CGPoint(x: 1, y: 1)
     
-    var horizontallyFlip = false
-    var verticallyFlip = false
-    var horizontalSkewDegrees: CGFloat = 0
-    var verticalSkewDegrees: CGFloat = 0
+    public var horizontallyFlip = false
+    public var verticallyFlip = false
+    public var horizontalSkewDegrees: CGFloat = 0
+    public var verticalSkewDegrees: CGFloat = 0
 
     private let cropViewPadding: CGFloat
     private let hotAreaUnit: CGFloat
 
-    func reset(forceFixedRatio: Bool = false) {
+    public func reset(forceFixedRatio: Bool = false) {
         horizontallyFlip = false
         verticallyFlip = false
         horizontalSkewDegrees = 0
@@ -108,7 +108,7 @@ final class CropViewModel: CropViewModelProtocol {
         setInitialStatus()
     }
         
-    func rotateBy90(withRotateType type: RotateBy90DegreeType) {
+    public func rotateBy90(withRotateType type: RotateBy90DegreeType) {
         if type == .clockwise {
             rotationType.clockwiseRotate90()
         } else {
@@ -116,11 +116,11 @@ final class CropViewModel: CropViewModelProtocol {
         }
     }
         
-    func getTotalRadians() -> CGFloat {
+    public func getTotalRadians() -> CGFloat {
         return getTotalRadians(by: radians)
     }
     
-    func getRatioType(byImageIsOriginalHorizontal isHorizontal: Bool) -> RatioType {
+    public func getRatioType(byImageIsOriginalHorizontal isHorizontal: Bool) -> RatioType {
         if isUpOrUpsideDown() {
             return isHorizontal ? .horizontal : .vertical
         } else {
@@ -128,11 +128,11 @@ final class CropViewModel: CropViewModelProtocol {
         }
     }
     
-    func isUpOrUpsideDown() -> Bool {
+    public func isUpOrUpsideDown() -> Bool {
         return rotationType == .none || rotationType == .counterclockwise180
     }
 
-    func prepareForCrop(byTouchPoint point: CGPoint) {
+    public func prepareForCrop(byTouchPoint point: CGPoint) {
         panOriginPoint = point
         cropBoxOriginFrame = cropBoxFrame
         
@@ -145,16 +145,16 @@ final class CropViewModel: CropViewModelProtocol {
         }
     }
     
-    func resetCropFrame(by frame: CGRect) {
+    public func resetCropFrame(by frame: CGRect) {
         cropBoxFrame = frame
         cropBoxOriginFrame = frame
     }
     
-    func needCrop() -> Bool {
+    public func needCrop() -> Bool {
         return !cropBoxOriginFrame.equalTo(cropBoxFrame)
     }
         
-    func getNewCropBoxFrame(withTouchPoint touchPoint: CGPoint,
+    public func getNewCropBoxFrame(withTouchPoint touchPoint: CGPoint,
                             andContentFrame contentFrame: CGRect,
                             aspectRatioLockEnabled: Bool) -> CGRect {
         var touchPoint = touchPoint
@@ -185,7 +185,7 @@ final class CropViewModel: CropViewModelProtocol {
         return newCropBoxFrame
     }
     
-    func setCropBoxFrame(by refCropBox: CGRect, for imageHorizontalToVerticalRatio: ImageHorizontalToVerticalRatio) {
+    public func setCropBoxFrame(by refCropBox: CGRect, for imageHorizontalToVerticalRatio: ImageHorizontalToVerticalRatio) {
         var cropBoxFrame = refCropBox
         let center = cropBoxFrame.center
         

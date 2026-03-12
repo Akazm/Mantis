@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct ImageHorizontalToVerticalRatio {
-    var ratio: Double
+public struct ImageHorizontalToVerticalRatio {
+    public var ratio: Double
+    
+    public init(ratio: Double) {
+        self.ratio = ratio
+    }
 }
 
-protocol CropViewModelProtocol: AnyObject {
+public protocol CropViewModelProtocol: AnyObject {
     var cropBoxFrameChanged: (_ frame: CGRect) -> Void { get set }
     var cropBoxFrame: CGRect { get set }
     var cropBoxOriginFrame: CGRect { get set }
@@ -56,32 +60,32 @@ protocol CropViewModelProtocol: AnyObject {
 }
 
 extension CropViewModelProtocol {
-    func setInitialStatus() {
+    public func setInitialStatus() {
         viewStatus = .initial
     }
     
-    func setRotatingStatus(by angle: Angle) {
+    public func setRotatingStatus(by angle: Angle) {
         degrees = angle.degrees
         viewStatus = .rotating
     }
     
-    func setDegree90RotatingStatus() {
+    public func setDegree90RotatingStatus() {
         viewStatus = .degree90Rotating
     }
     
-    func setTouchImageStatus() {
+    public func setTouchImageStatus() {
         viewStatus = .touchImage
     }
 
-    func setTouchRotationBoardStatus() {
+    public func setTouchRotationBoardStatus() {
         viewStatus = .touchRotationBoard
     }
 
-    func setTouchCropboxHandleStatus() {
+    public func setTouchCropboxHandleStatus() {
         viewStatus = .touchCropboxHandle(tappedEdge: tappedEdge)
     }
     
-    func setBetweenOperationStatus() {
+    public func setBetweenOperationStatus() {
         viewStatus = .betweenOperation
     }
 }

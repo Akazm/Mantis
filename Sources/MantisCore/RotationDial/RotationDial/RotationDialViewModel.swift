@@ -8,10 +8,10 @@
 
 import Foundation
 
-final class RotationDialViewModel: RotationDialViewModelProtocol {
-    var didSetRotationAngle: (Angle) -> Void = { _ in }
+public final class RotationDialViewModel: RotationDialViewModelProtocol {
+    public var didSetRotationAngle: (Angle) -> Void = { _ in }
     
-    var touchPoint: CGPoint? {
+    public var touchPoint: CGPoint? {
         didSet {
             guard let oldValue = oldValue,
                 let newValue = self.touchPoint,
@@ -24,7 +24,7 @@ final class RotationDialViewModel: RotationDialViewModelProtocol {
         }
     }
 
-    var rotationAngle = Angle(degrees: 0) {
+    public var rotationAngle = Angle(degrees: 0) {
         didSet {
             didSetRotationAngle(rotationAngle)
         }
@@ -32,7 +32,7 @@ final class RotationDialViewModel: RotationDialViewModelProtocol {
 
     private var rotationCalculator: RotationCalculator?
     
-    func setup(with midPoint: CGPoint) {
+    public func setup(with midPoint: CGPoint) {
         rotationCalculator = RotationCalculator(midPoint: midPoint)
     }
 }

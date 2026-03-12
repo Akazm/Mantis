@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class SlideDialViewModel {
-    var didSetRotationAngle: (Angle) -> Void = { _ in }
+public final class SlideDialViewModel {
+    public var didSetRotationAngle: (Angle) -> Void = { _ in }
     
     /// Called when the selected adjustment type changes (only used in withTypeSelector mode)
-    var didChangeAdjustmentType: ((RotationAdjustmentType) -> Void)?
+    public var didChangeAdjustmentType: ((RotationAdjustmentType) -> Void)?
     
-    var rotationAngle = Angle(degrees: 0) {
+    public var rotationAngle = Angle(degrees: 0) {
         didSet {
             didSetRotationAngle(rotationAngle)
         }
@@ -21,7 +21,7 @@ final class SlideDialViewModel {
     
     // MARK: - Multi-type support (withTypeSelector mode)
     
-    var currentAdjustmentType: RotationAdjustmentType = .straighten
+    public var currentAdjustmentType: RotationAdjustmentType = .straighten
     
     /// Stored angles for each adjustment type
     private var storedAngles: [RotationAdjustmentType: CGFloat] = [
@@ -30,15 +30,15 @@ final class SlideDialViewModel {
         .verticalSkew: 0
     ]
     
-    func storedAngle(for type: RotationAdjustmentType) -> CGFloat {
+    public func storedAngle(for type: RotationAdjustmentType) -> CGFloat {
         storedAngles[type] ?? 0
     }
     
-    func storeAngle(_ degrees: CGFloat, for type: RotationAdjustmentType) {
+    public func storeAngle(_ degrees: CGFloat, for type: RotationAdjustmentType) {
         storedAngles[type] = degrees
     }
         
-    func reset() {
+    public func reset() {
         storedAngles = [
             .straighten: 0,
             .horizontalSkew: 0,
@@ -47,7 +47,7 @@ final class SlideDialViewModel {
         rotationAngle = Angle(degrees: 0)
     }
     
-    func resetAll() {
+    public func resetAll() {
         storedAngles = [
             .straighten: 0,
             .horizontalSkew: 0,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-func print(_ objects: Any...) {
+public func print(_ objects: Any...) {
     #if DEBUG
     for item in objects {
         Swift.print(item)
@@ -15,13 +15,13 @@ func print(_ objects: Any...) {
     #endif
 }
 
-func print(_ object: Any) {
+public func print(_ object: Any) {
     #if DEBUG
     Swift.print(object)
     #endif
 }
 
-func isTheSamePoint(point1: CGPoint, point2: CGPoint) -> Bool {
+public func isTheSamePoint(point1: CGPoint, point2: CGPoint) -> Bool {
     // Use a tolerance large enough to absorb floating-point drift introduced
     // by coordinate conversions during device rotation, while still small
     // enough to detect intentional user edits to the crop region.

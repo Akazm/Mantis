@@ -32,7 +32,7 @@ public enum CropToolbarMode {
     case embedded // Without cancel and crop buttons
 }
 
-enum RatioType {
+public enum RatioType {
     case horizontal
     case vertical
 }

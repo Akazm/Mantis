@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct LocalizedHelper {
+public struct LocalizedHelper {
     private static var bundle: Bundle?
     
-    static func setBundle(_ bundle: Bundle) {
+    public static func setBundle(_ bundle: Bundle) {
         guard let resourceBundleURL = bundle.url(
             forResource: "MantisResources", withExtension: "bundle")
             else { return }
         LocalizedHelper.bundle = Bundle(url: resourceBundleURL)
     }
     
-    static func getString(
+    public static func getString(
         _ key: String,
         localizationConfig: LocalizationConfig = Mantis.localizationConfig,
         value: String? = nil

@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct RatioItemType {
-    var nameH: String
-    var ratioH: Double
-    var nameV: String
-    var ratioV: Double
+public struct RatioItemType {
+    public var nameH: String
+    public var ratioH: Double
+    public var nameV: String
+    public var ratioV: Double
     
-    init?(nameH: String, ratioH: Double, nameV: String, ratioV: Double) {
+    public init?(nameH: String, ratioH: Double, nameV: String, ratioV: Double) {
         guard ratioH > 0 && ratioV > 0 else {
             return nil
         }
@@ -26,16 +26,16 @@ struct RatioItemType {
     }
 }
 
-final class FixedRatioManager {
-    private(set) var ratios: [RatioItemType] = []
+public final class FixedRatioManager {
+    public private(set) var ratios: [RatioItemType] = []
     private var ratioOptions: RatioOptions = .all
     private var customRatios: [RatioItemType] = []
 
-    var type: RatioType = .horizontal
-    var originalRatioH = 1.0
-    let fixedRatioNumber = 2
+    public var type: RatioType = .horizontal
+    public var originalRatioH = 1.0
+    public let fixedRatioNumber = 2
 
-    init(type: RatioType, originalRatioH: Double, ratioOptions: RatioOptions = .all, customRatios: [RatioItemType] = []) {
+    public init(type: RatioType, originalRatioH: Double, ratioOptions: RatioOptions = .all, customRatios: [RatioItemType] = []) {
 
         self.type = type
         self.originalRatioH = originalRatioH
@@ -61,7 +61,7 @@ final class FixedRatioManager {
         sort(isByHorizontal: (type == .horizontal))
     }
 
-    func getOriginalRatioItem() -> RatioItemType? {
+    public func getOriginalRatioItem() -> RatioItemType? {
         let originalText = LocalizedHelper.getString("Mantis.Original", value: "Original")
         return RatioItemType(nameH: originalText, ratioH: originalRatioH, nameV: originalText, ratioV: originalRatioH)
     }

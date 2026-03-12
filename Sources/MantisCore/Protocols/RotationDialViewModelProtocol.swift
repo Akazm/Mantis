@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol RotationControlViewModelProtocol {
+public protocol RotationControlViewModelProtocol {
     var rotationAngle: Angle { get set }
     var didSetRotationAngle: (Angle) -> Void { get set }
 }
 
-protocol RotationDialViewModelProtocol: RotationControlViewModelProtocol {
+public protocol RotationDialViewModelProtocol: RotationControlViewModelProtocol {
     var touchPoint: CGPoint? { get set }
     func setup(with midPoint: CGPoint)
 }

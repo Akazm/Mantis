@@ -9,8 +9,8 @@
 import Foundation
 import CoreGraphics
 
-struct GeometryHelper {    
-    static func getInscribeRect(fromOutsideRect outsideRect: CGRect, andInsideRect insideRect: CGRect) -> CGRect {
+public struct GeometryHelper {    
+    public static func getInscribeRect(fromOutsideRect outsideRect: CGRect, andInsideRect insideRect: CGRect) -> CGRect {
         let insideRectRatio = insideRect.width / insideRect.height
         let outsideRectRatio = outsideRect.width / outsideRect.height
         
@@ -28,7 +28,7 @@ struct GeometryHelper {
         return rect
     }
     
-    static func getCropEdge(forPoint point: CGPoint, byTouchRect touchRect: CGRect, hotAreaUnit: CGFloat) -> CropViewAuxiliaryIndicatorHandleType {
+    public static func getCropEdge(forPoint point: CGPoint, byTouchRect touchRect: CGRect, hotAreaUnit: CGFloat) -> CropViewAuxiliaryIndicatorHandleType {
         // Make sure the corners take priority
         let touchSize = CGSize(width: hotAreaUnit, height: hotAreaUnit)
         
@@ -66,7 +66,7 @@ struct GeometryHelper {
         return .none
     }
     
-    static func scale(from transform: CGAffineTransform) -> Double {
+    public static func scale(from transform: CGAffineTransform) -> Double {
         return sqrt(Double(transform.a * transform.a + transform.c * transform.c))
     }
 }

@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum RatioType {
-    case horizontal
-    case vertical
-}
-
 final class RatioPresenter {
     var didGetRatio: ((Double) -> Void) = { _ in }
     private var type: RatioType = .vertical
