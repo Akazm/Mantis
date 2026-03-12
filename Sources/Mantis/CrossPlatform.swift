@@ -147,6 +147,11 @@ extension NSImage {
     public var scale: CGFloat { 1.0 }
 }
 
+// MARK: - NSEdgeInsets Extensions
+extension NSEdgeInsets {
+    public static let zero = NSEdgeInsets()
+}
+
 // MARK: - NSScrollView Extensions (UIScrollView Compatibility)
 extension NSScrollView {
     public var contentOffset: CGPoint {

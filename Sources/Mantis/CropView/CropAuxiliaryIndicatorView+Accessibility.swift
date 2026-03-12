@@ -5,8 +5,12 @@
 //  Created by Yingtao Guo on 3/1/23.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 extension CropAuxiliaryIndicatorView {
     private func ifAccessibilityHelperNeeded() -> Bool {
@@ -115,4 +119,4 @@ extension CropAuxiliaryIndicatorView {
         }
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

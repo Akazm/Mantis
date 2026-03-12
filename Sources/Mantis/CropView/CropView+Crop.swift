@@ -5,8 +5,12 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // MARK: - Crop Output
 extension CropView {
@@ -182,4 +186,4 @@ extension CropView {
         image.getOutputCropImageSize(by: getCropInfo())
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

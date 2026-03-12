@@ -6,8 +6,12 @@
 //  Copyright © 2018 Echo Studio. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class CropWorkbenchView: UIScrollView {
     var imageContainer: ImageContainerProtocol?
@@ -28,11 +32,16 @@ final class CropWorkbenchView: UIScrollView {
          imageContainer: ImageContainerProtocol) {
         super.init(frame: frame)
         
+        #if canImport(UIKit)
         alwaysBounceHorizontal = true
         alwaysBounceVertical = true
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         contentInsetAdjustmentBehavior = .never
+        #elseif canImport(AppKit)
+        hasHorizontalScroller = false
+        hasVerticalScroller = false
+        #endif
         clipsToBounds = false
         contentSize = bounds.size
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -45,6 +54,7 @@ final class CropWorkbenchView: UIScrollView {
         
         isAccessibilityElement = false
         
+        #if canImport(UIKit)
         #if compiler(>=6.2)
         if #available(iOS 26.0, *) {
             topEdgeEffect.isHidden = true
@@ -53,12 +63,14 @@ final class CropWorkbenchView: UIScrollView {
             rightEdgeEffect.isHidden = true
         }
         #endif
+        #endif
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    #if canImport(UIKit)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchesBegan()
         super.touchesBegan(touches, with: event)
@@ -73,6 +85,17 @@ final class CropWorkbenchView: UIScrollView {
         touchesEnded()
         super.touchesEnded(touches, with: event)
     }
+    #elseif canImport(AppKit)
+    override func mouseDown(with event: NSEvent) {
+        touchesBegan()
+        super.mouseDown(with: event)
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        touchesEnded()
+        super.mouseUp(with: event)
+    }
+    #endif
         
     private func getBoundZoomScale() -> CGFloat {
         guard let imageContainer = imageContainer else {
@@ -165,4 +188,4 @@ extension CropWorkbenchView: CropWorkbenchViewProtocol {
         setZoomScale(newZoomScale, animated: true)
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

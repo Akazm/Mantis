@@ -5,8 +5,12 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // MARK: - Rotation Dial Setup
 extension CropView {
@@ -94,12 +98,14 @@ extension CropView {
         rotationControlView.updateRotationValue(by: Angle(radians: viewModel.radians))
         viewModel.setBetweenOperationStatus()
         
+        #if canImport(UIKit)
         // Prevent cropWorkbenchView's pan gesture from stealing touches intended
         // for the slide ruler. Without this, both UIScrollViews compete for the
         // same swipe gesture, especially in landscape where they are adjacent.
         if let slideDial = rotationControlView as? SlideDial {
             cropWorkbenchView.panGestureRecognizer.require(toFail: slideDial.slideRuler.scrollRulerView.panGestureRecognizer)
         }
+        #endif
         
         adaptRotationControlViewToCropBoxIfNeeded()
         rotationControlView.bringSelfToFront()
@@ -374,4 +380,4 @@ extension CropView: RotationTypeSelectorDelegate {
         }
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

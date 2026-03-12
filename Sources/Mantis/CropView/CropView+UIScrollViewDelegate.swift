@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
 
@@ -83,4 +84,72 @@ extension CropView: UIScrollViewDelegate {
         }
     }
 }
-#endif // canImport(UIKit)
+#elseif canImport(AppKit)
+import AppKit
+
+extension CropView {
+    func setupScrollViewNotifications() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self,
+                       selector: #selector(handleScrollWillStart(_:)),
+                       name: NSScrollView.willStartLiveScrollNotification,
+                       object: cropWorkbenchView)
+        nc.addObserver(self,
+                       selector: #selector(handleScrollDidLiveScroll(_:)),
+                       name: NSScrollView.didLiveScrollNotification,
+                       object: cropWorkbenchView)
+        nc.addObserver(self,
+                       selector: #selector(handleScrollDidEnd(_:)),
+                       name: NSScrollView.didEndLiveScrollNotification,
+                       object: cropWorkbenchView)
+        nc.addObserver(self,
+                       selector: #selector(handleMagnifyWillStart(_:)),
+                       name: NSScrollView.willStartLiveMagnifyNotification,
+                       object: cropWorkbenchView)
+        nc.addObserver(self,
+                       selector: #selector(handleMagnifyDidEnd(_:)),
+                       name: NSScrollView.didEndLiveMagnifyNotification,
+                       object: cropWorkbenchView)
+    }
+    
+    @objc private func handleScrollWillStart(_ notification: Notification) {
+        delegate?.cropViewDidBeginCrop(self)
+        viewModel.setTouchImageStatus()
+    }
+    
+    @objc private func handleScrollDidLiveScroll(_ notification: Notification) {
+        // Equivalent to scrollViewDidZoom for skew handling during scroll
+        let hasSkew = viewModel.horizontalSkewDegrees != 0 || viewModel.verticalSkewDegrees != 0
+        if hasSkew {
+            applySkewTransformIfNeeded()
+            updateContentInsetForSkew()
+        }
+    }
+    
+    @objc private func handleScrollDidEnd(_ notification: Notification) {
+        clampContentOffsetForSkewIfNeeded()
+        delegate?.cropViewDidEndCrop(self)
+        viewModel.setBetweenOperationStatus()
+    }
+    
+    @objc private func handleMagnifyWillStart(_ notification: Notification) {
+        delegate?.cropViewDidBeginResize(self)
+        viewModel.setTouchImageStatus()
+    }
+    
+    @objc private func handleMagnifyDidEnd(_ notification: Notification) {
+        delegate?.cropViewDidEndResize(self)
+        makeSureImageContainsCropOverlay()
+        
+        if viewModel.horizontalSkewDegrees != 0 || viewModel.verticalSkewDegrees != 0 {
+            updateContentInsetForSkew()
+        }
+        clampContentOffsetForSkewIfNeeded()
+        
+        isManuallyZoomed = true
+        hasManuallyAdjustedCropBox = true
+        viewModel.setBetweenOperationStatus()
+    }
+}
+#endif
+#endif // canImport(UIKit) || canImport(AppKit)

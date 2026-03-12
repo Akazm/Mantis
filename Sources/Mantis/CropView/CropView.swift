@@ -22,8 +22,12 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 protocol CropViewDelegate: AnyObject {
     func cropViewDidBecomeResettable(_ cropView: CropViewProtocol)
@@ -263,7 +267,11 @@ final class CropView: UIView {
             self?.viewModel.setBetweenOperationStatus()
         }
         
+        #if canImport(UIKit)
         cropWorkbenchView.delegate = self
+        #elseif canImport(AppKit)
+        setupScrollViewNotifications()
+        #endif
         addSubview(cropWorkbenchView)
         
         if cropViewConfig.minimumZoomScale > 1 {
@@ -646,4 +654,4 @@ extension CropView: CropViewProtocol {
 extension UIActivityIndicatorView: ActivityIndicatorProtocol {
     
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

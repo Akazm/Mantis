@@ -5,8 +5,12 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // MARK: - Flip
 extension CropView {
@@ -90,4 +94,4 @@ extension CropView {
         checkImageStatusChanged()
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

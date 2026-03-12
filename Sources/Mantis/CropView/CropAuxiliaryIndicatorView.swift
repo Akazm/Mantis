@@ -6,8 +6,12 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class CropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtocol {
     private var borderNormalColor = UIColor.white
@@ -123,6 +127,7 @@ final class CropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtoc
         }
     }
     
+    #if canImport(UIKit)
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         var result = false
         
@@ -133,6 +138,18 @@ final class CropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtoc
         
         return result
     }
+    #elseif canImport(AppKit)
+    override func hitTest(_ point: CGPoint) -> NSView? {
+        let localPoint = convert(point, from: superview)
+        for helperView in accessibilityHelperViews {
+            let convertedPoint = helperView.convert(localPoint, from: self)
+            if helperView.bounds.contains(convertedPoint) {
+                return self
+            }
+        }
+        return nil
+    }
+    #endif
     
     override func draw(_ rect: CGRect) {
         if style == .transparent {
@@ -334,4 +351,4 @@ extension CropAuxiliaryIndicatorView {
         case left
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)
