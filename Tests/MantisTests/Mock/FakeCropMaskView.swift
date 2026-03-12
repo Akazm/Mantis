@@ -7,6 +7,8 @@
 
 import UIKit
 @testable import Mantis
+@testable import MantisCore
+@testable import MantisIOS
 
 class FakeCropMaskView: UIView, CropMaskProtocol {
     var maskLayer: CALayer?

@@ -7,6 +7,8 @@
 
 import UIKit
 @testable import Mantis
+@testable import MantisCore
+@testable import MantisIOS
 
 class FakeCropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtocol {
     var cropBoxHotAreaUnit: CGFloat = 42

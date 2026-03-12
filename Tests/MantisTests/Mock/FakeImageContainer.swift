@@ -7,6 +7,8 @@
 
 import UIKit
 @testable import Mantis
+@testable import MantisCore
+@testable import MantisIOS
 
 class FakeImageContainer: UIView, ImageContainerProtocol {
     func contains(rect: CGRect, fromView view: UIView, tolerance: CGFloat) -> Bool {

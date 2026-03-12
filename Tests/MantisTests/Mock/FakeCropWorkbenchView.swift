@@ -7,6 +7,8 @@
 
 import UIKit
 @testable import Mantis
+@testable import MantisCore
+@testable import MantisIOS
 
 class FakeCropWorkbenchView: UIScrollView, CropWorkbenchViewProtocol {
     var imageContainer: ImageContainerProtocol?

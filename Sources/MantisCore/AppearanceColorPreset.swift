@@ -1,0 +1,297 @@
+//
+//  AppearanceColorPreset.swift
+//  Mantis
+//
+//  Created by Echo on 2/22/26.
+//
+
+import Foundation
+import CoreGraphics
+
+public enum AppearanceColorPreset {
+    
+    private static let lightBackground = MantisColor(white: 0.95, alpha: 1.0)
+    
+    /// Creates a dynamic color that adapts to dark/light mode.
+    #if canImport(UIKit)
+    private static func dynamicColor(dark: MantisColor, light: MantisColor) -> MantisColor {
+        if #available(iOS 13.0, *) {
+            return MantisColor { $0.userInterfaceStyle == .dark ? dark : light }
+        } else {
+            return dark
+        }
+    }
+    #elseif canImport(AppKit)
+    private static func dynamicColor(dark: MantisColor, light: MantisColor) -> MantisColor {
+        return MantisColor(name: nil) { appearance in
+            appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
+        }
+    }
+    #endif
+    
+    // MARK: - Main Background (CropViewController / CropView)
+    public static func mainBackground(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .black
+        case .forceLight:
+            return lightBackground
+        case .system:
+            return dynamicColor(dark: .black, light: lightBackground)
+        }
+    }
+    
+    // MARK: - CropToolbarConfig
+    public static func toolbarBackground(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .black
+        case .forceLight:
+            return lightBackground
+        case .system:
+            return dynamicColor(dark: .black, light: lightBackground)
+        }
+    }
+    
+    public static func toolbarForeground(for mode: AppearanceMode) -> MantisColor {
+        let lightForeground = MantisColor(white: 0.1, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return lightForeground
+        case .system:
+            return dynamicColor(dark: .white, light: lightForeground)
+        }
+    }
+    
+    // MARK: - Dimming & Mask
+    public static func dimmingOverlayColor(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .black
+        case .forceLight:
+            return lightBackground
+        case .system:
+            return dynamicColor(dark: .black, light: lightBackground)
+        }
+    }
+    
+    public static func maskVisualEffectType(for mode: AppearanceMode) -> CropMaskVisualEffectType {
+        switch mode {
+        case .forceDark:
+            return .blurDark
+        case .forceLight:
+            return .light
+        case .system:
+            return .blurSystem
+        }
+    }
+    
+    // MARK: - SlideDialConfig
+    public static func slideDialScaleColor(for mode: AppearanceMode) -> MantisColor {
+        let lightScale = MantisColor(white: 0.78, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .gray
+        case .forceLight:
+            return lightScale
+        case .system:
+            return dynamicColor(dark: .gray, light: lightScale)
+        }
+    }
+    
+    public static func slideDialMajorScaleColor(for mode: AppearanceMode) -> MantisColor {
+        let lightMajor = MantisColor(white: 0.55, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return lightMajor
+        case .system:
+            return dynamicColor(dark: .white, light: lightMajor)
+        }
+    }
+    
+    public static func slideDialInactiveColor(for mode: AppearanceMode) -> MantisColor {
+        let lightInactive = MantisColor(white: 0.15, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return lightInactive
+        case .system:
+            return dynamicColor(dark: .white, light: lightInactive)
+        }
+    }
+    
+    public static func slideDialRingColor(for mode: AppearanceMode) -> MantisColor {
+        let darkRing = MantisColor(white: 0.45, alpha: 1.0)
+        let lightRing = MantisColor(white: 0.82, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return darkRing
+        case .forceLight:
+            return lightRing
+        case .system:
+            return dynamicColor(dark: darkRing, light: lightRing)
+        }
+    }
+    
+    public static func slideDialButtonFillColor(for mode: AppearanceMode) -> MantisColor {
+        let darkFill = MantisColor(white: 0.2, alpha: 1.0)
+        let lightFill = MantisColor.white
+        switch mode {
+        case .forceDark:
+            return darkFill
+        case .forceLight:
+            return lightFill
+        case .system:
+            return dynamicColor(dark: darkFill, light: lightFill)
+        }
+    }
+    
+    public static func slideDialIconColor(for mode: AppearanceMode) -> MantisColor {
+        let lightIcon = MantisColor(white: 0.1, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return lightIcon
+        case .system:
+            return dynamicColor(dark: .white, light: lightIcon)
+        }
+    }
+    
+    public static func slideDialCentralDotColor(for mode: AppearanceMode) -> MantisColor {
+        let lightDot = MantisColor(white: 0.55, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return lightDot
+        case .system:
+            return dynamicColor(dark: .white, light: lightDot)
+        }
+    }
+    
+    // MARK: - RotationDialConfig
+    public static func rotationDialTheme(for mode: AppearanceMode) -> RotationDialConfig.Theme {
+        switch mode {
+        case .forceDark:
+            return .dark
+        case .forceLight:
+            return .light
+        case .system:
+            return .dark
+        }
+    }
+    
+    // MARK: - RotationTypeSelector
+    public static func typeSelectorSelectedColor(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return .black
+        case .system:
+            return dynamicColor(dark: .white, light: .black)
+        }
+    }
+    
+    public static func typeSelectorUnselectedColor(for mode: AppearanceMode) -> MantisColor {
+        let lightUnselected = MantisColor(white: 0.55, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .gray
+        case .forceLight:
+            return lightUnselected
+        case .system:
+            return dynamicColor(dark: .gray, light: lightUnselected)
+        }
+    }
+    
+    public static func typeSelectorIndicatorColor(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return .black
+        case .system:
+            return dynamicColor(dark: .white, light: .black)
+        }
+    }
+    
+    // MARK: - RatioItemView
+    public static func ratioItemSelectedBackground(for mode: AppearanceMode) -> MantisColor {
+        let darkSelected = MantisColor.lightGray.withAlphaComponent(0.7)
+        let lightSelected = MantisColor(white: 0.80, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return darkSelected
+        case .forceLight:
+            return lightSelected
+        case .system:
+            return dynamicColor(dark: darkSelected, light: lightSelected)
+        }
+    }
+    
+    public static func ratioItemUnselectedBackground(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .black
+        case .forceLight:
+            return lightBackground
+        case .system:
+            return dynamicColor(dark: .black, light: lightBackground)
+        }
+    }
+    
+    public static func ratioItemSelectedText(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return .black
+        case .system:
+            return dynamicColor(dark: .white, light: .black)
+        }
+    }
+    
+    public static func ratioItemUnselectedText(for mode: AppearanceMode) -> MantisColor {
+        let lightUnselected = MantisColor(white: 0.4, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .gray
+        case .forceLight:
+            return lightUnselected
+        case .system:
+            return dynamicColor(dark: .gray, light: lightUnselected)
+        }
+    }
+    
+    // MARK: - Auto-adjust button
+    public static func autoAdjustInactiveColor(for mode: AppearanceMode) -> MantisColor {
+        let lightInactive = MantisColor(white: 0.55, alpha: 1.0)
+        switch mode {
+        case .forceDark:
+            return .gray
+        case .forceLight:
+            return lightInactive
+        case .system:
+            return dynamicColor(dark: .gray, light: lightInactive)
+        }
+    }
+    
+    // MARK: - Activity Indicator
+    public static func activityIndicatorColor(for mode: AppearanceMode) -> MantisColor {
+        switch mode {
+        case .forceDark:
+            return .white
+        case .forceLight:
+            return .darkGray
+        case .system:
+            return dynamicColor(dark: .white, light: .darkGray)
+        }
+    }
+}
