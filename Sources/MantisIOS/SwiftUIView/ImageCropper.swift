@@ -49,7 +49,7 @@ public enum CropStatus {
 /// }
 /// ```
 /// This view handles the `cropViewControllerDidCrop` and `cropViewControllerDidCancel` delegate methods
-/// of `Mantis.CropViewController`. These methods are implemented by default in the `Coordinator`.
+/// of `CropViewController`. These methods are implemented by default in the `Coordinator`.
 ///
 /// If you need to handle more delegate methods (e.g., `cropViewControllerDidBeginResize`,
 /// `cropViewControllerDidImageTransformed`, etc.), you will need to implement your own `UIViewControllerRepresentable`
@@ -57,7 +57,7 @@ public enum CropStatus {
 ///
 
 public struct ImageCropperView: UIViewControllerRepresentable {
-    let config: Mantis.Config
+    let config: MantisCore.Config
     
     @Binding var image: UIImage?
     @Binding var transformation: Transformation?
@@ -70,11 +70,11 @@ public struct ImageCropperView: UIViewControllerRepresentable {
     /// Creates an `ImageCropper` view with optional custom configuration and required image bindings.
     ///
     /// - Parameters:
-    ///   - config: An optional `Mantis.Config` object to customize the cropping behavior. Defaults to `.init()`.
+    ///   - config: An optional `MantisCore.Config` object to customize the cropping behavior. Defaults to `.init()`.
     ///   - image: A binding to the original image to be cropped.
     ///   - transformation: A binding to receive the transformation (rotation, scaling, etc.) applied to the image.
     ///   - cropInfo: A binding to receive information about the selected crop area.
-    public init(config: Mantis.Config = Mantis.Config(),
+    public init(config: MantisCore.Config = MantisCore.Config(),
                 image: Binding<UIImage?>,
                 transformation: Binding<Transformation?>,
                 cropInfo: Binding<CropInfo?>,
@@ -92,7 +92,7 @@ public struct ImageCropperView: UIViewControllerRepresentable {
     
     public class Coordinator: CropViewControllerDelegate {
         var parent: ImageCropperView
-        var cropViewController: Mantis.CropViewController?
+        var cropViewController: CropViewController?
         
         var actionBinding: Binding<CropAction?>
         
@@ -105,7 +105,7 @@ public struct ImageCropperView: UIViewControllerRepresentable {
         }
         
         @MainActor
-        public func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
+        public func cropViewControllerDidCrop(_ cropViewController: CropViewController, cropped: UIImage, transformation: Transformation, cropInfo: CropInfo) {
             parent.image = cropped
             parent.transformation = transformation
             parent.cropInfo = cropInfo
@@ -118,12 +118,12 @@ public struct ImageCropperView: UIViewControllerRepresentable {
         }
         
         @MainActor
-        public func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+        public func cropViewControllerDidCancel(_ cropViewController: CropViewController, original: UIImage) {
             parent.onDismiss()
         }
         
         @MainActor
-        public func cropViewControllerDidFailToCrop(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+        public func cropViewControllerDidFailToCrop(_ cropViewController: CropViewController, original: UIImage) {
             isProcessingAction = false
             lastProcessedAction = nil
             parent.onDismiss()
@@ -204,7 +204,7 @@ public struct ImageCropperView: UIViewControllerRepresentable {
             return emptyVC
         }
         
-        let cropViewController = Mantis.cropViewController(
+        let cropViewController = MantisIOS.cropViewController(
             image: imageToEdit,
             config: config
         )

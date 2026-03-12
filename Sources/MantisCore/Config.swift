@@ -26,7 +26,7 @@ import Foundation
 
 // MARK: - Localization
 public final class LocalizationConfig {
-    public var bundle: Bundle? = Mantis.Config.bundle
+    public var bundle: Bundle? = MantisCore.Config.bundle
     public var tableName = "MantisLocalizable"
 }
     
@@ -53,7 +53,7 @@ public struct Config {
     public var presetFixedRatioType: PresetFixedRatioType = .canUseMultiplePresetFixedRatio()
     public var showAttachedCropToolbar = true
     
-    public private(set) var localizationConfig = Mantis.localizationConfig
+    public private(set) var localizationConfig = MantisCore.localizationConfig
     
     public var customRatios: [(width: Int, height: Int)] = []
 

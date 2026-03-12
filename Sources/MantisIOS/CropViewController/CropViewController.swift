@@ -27,7 +27,7 @@ import MantisCore
 
 open class CropViewController: UIViewController {
     public weak var delegate: CropViewControllerDelegate?
-    public var config = Mantis.Config() {
+    public var config = MantisCore.Config() {
         didSet {
             if config.enableUndoRedo {
                 TransformStack.shared.transformDelegate = self
@@ -85,7 +85,7 @@ open class CropViewController: UIViewController {
         print("CropViewController deinit.")
     }
 
-    required public init(config: Mantis.Config = Mantis.Config()) {
+    required public init(config: MantisCore.Config = MantisCore.Config()) {
         self.config = config
         
         switch config.cropViewConfig.cropShapeType {

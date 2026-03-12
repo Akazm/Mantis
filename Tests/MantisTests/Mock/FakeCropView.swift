@@ -7,6 +7,8 @@
 
 import UIKit
 @testable import Mantis
+@testable import MantisCore
+@testable import MantisIOS
 
 class FakeCropView: UIView, CropViewProtocol {
     func applyCropState(with cropState: Mantis.CropState) {
