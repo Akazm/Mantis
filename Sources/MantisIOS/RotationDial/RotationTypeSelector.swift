@@ -8,7 +8,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 protocol RotationTypeSelectorDelegate: AnyObject {
@@ -146,4 +145,3 @@ final class RotationTypeSelector: UIView {
         updateIndicatorPosition(animated: false)
     }
 }
-#endif // canImport(UIKit)

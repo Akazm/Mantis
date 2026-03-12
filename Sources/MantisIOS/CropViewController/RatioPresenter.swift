@@ -8,7 +8,6 @@
 
 import MantisShared
 
-#if canImport(UIKit)
 import UIKit
 
 final class RatioPresenter {
@@ -91,4 +90,3 @@ public extension UIAlertController {
         }
     }
 }
-#endif // canImport(UIKit)

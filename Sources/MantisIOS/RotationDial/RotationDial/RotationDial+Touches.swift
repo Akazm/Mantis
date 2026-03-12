@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 extension RotationDial {
@@ -53,4 +52,3 @@ extension RotationDial {
         return true
     }
 }
-#endif // canImport(UIKit)

@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class RatioItemView: UIView {
@@ -106,4 +105,3 @@ private class PaddingLabel: UILabel {
         }
     }
 }
-#endif // canImport(UIKit)

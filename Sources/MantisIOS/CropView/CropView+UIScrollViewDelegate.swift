@@ -7,7 +7,6 @@
 
 import MantisShared
 import Foundation
-#if canImport(UIKit)
 import UIKit
 
 extension CropView: UIScrollViewDelegate {
@@ -84,4 +83,3 @@ extension CropView: UIScrollViewDelegate {
         }
     }
 }
-#endif // canImport(UIKit)

@@ -27,7 +27,6 @@
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 struct ToolBarButtonImageBuilder {
@@ -117,4 +116,3 @@ struct ToolBarButtonImageBuilder {
         return nil
     }
 }
-#endif // canImport(UIKit)

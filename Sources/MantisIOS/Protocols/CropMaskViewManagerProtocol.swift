@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 protocol CropMaskViewManagerProtocol {
@@ -16,4 +15,3 @@ protocol CropMaskViewManagerProtocol {
     func showVisualEffectBackground(animated: Bool)
     func adaptMaskTo(match cropRect: CGRect, cropRatio: CGFloat)
 }
-#endif // canImport(UIKit)

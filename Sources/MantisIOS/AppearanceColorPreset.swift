@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 enum AppearanceColorPreset {
@@ -289,4 +288,3 @@ enum AppearanceColorPreset {
         }
     }
 }
-#endif // canImport(UIKit)

@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 import CoreImage
 
@@ -369,4 +368,3 @@ extension UIImage {
         }
     }
 }
-#endif // canImport(UIKit)

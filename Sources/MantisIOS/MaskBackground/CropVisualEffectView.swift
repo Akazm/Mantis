@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class CropMaskVisualEffectView: UIVisualEffectView, CropMaskProtocol {
@@ -95,4 +94,3 @@ final class CropMaskVisualEffectView: UIVisualEffectView, CropMaskProtocol {
         }
     }
 }
-#endif // canImport(UIKit)

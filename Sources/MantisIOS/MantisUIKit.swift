@@ -7,7 +7,6 @@
 
 import MantisShared
 
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - UIKit APIs
@@ -196,4 +195,3 @@ private func setupRotationControlViewIfNeeded(withConfig cropViewConfig: CropVie
     }
 }
 
-#endif // canImport(UIKit)

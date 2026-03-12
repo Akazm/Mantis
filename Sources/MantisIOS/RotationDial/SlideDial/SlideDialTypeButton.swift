@@ -8,7 +8,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - SlideDialTypeButton
@@ -179,4 +178,3 @@ final class SlideDialTypeButton: UIView {
                                                         backgroundColor: config.buttonFillColor)
     }
 }
-#endif // canImport(UIKit)

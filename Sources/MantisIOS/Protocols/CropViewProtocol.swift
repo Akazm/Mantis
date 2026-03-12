@@ -7,7 +7,6 @@
 
 import MantisShared
 import Foundation
-#if canImport(UIKit)
 import UIKit
 
 public protocol ActivityIndicatorProtocol: UIView {
@@ -71,4 +70,3 @@ extension CropViewProtocol {
     func zoomIn() {}    
     func zoomOut() {}
 }
-#endif // canImport(UIKit)

@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class CropDimmingView: UIView, CropMaskProtocol {
@@ -27,4 +26,3 @@ final class CropDimmingView: UIView, CropMaskProtocol {
         layer.addSublayer(maskLayer!)
     }
 }
-#endif // canImport(UIKit)

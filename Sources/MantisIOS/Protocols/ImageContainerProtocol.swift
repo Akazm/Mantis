@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 protocol ImageContainerProtocol: UIView {
@@ -18,4 +17,3 @@ protocol ImageContainerProtocol: UIView {
 extension ImageContainerProtocol {
     func update(_ image: UIImage) {}
 }
-#endif // canImport(UIKit)

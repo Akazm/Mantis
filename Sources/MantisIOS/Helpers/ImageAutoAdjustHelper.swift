@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 import Vision
 
@@ -49,4 +48,3 @@ class ImageAutoAdjustHelper {
         }
     }
 }
-#endif // canImport(UIKit)

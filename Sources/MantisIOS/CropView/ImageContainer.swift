@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class ImageContainer: UIView {
@@ -75,4 +74,3 @@ extension ImageContainer: ImageContainerProtocol {
         imageView.image = image
     }
 }
-#endif // canImport(UIKit)

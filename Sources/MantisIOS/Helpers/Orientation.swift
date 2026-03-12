@@ -5,7 +5,6 @@
 //  Created by Echo on 10/10/20.
 //
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 public struct Orientation {
@@ -55,4 +54,3 @@ public struct Orientation {
         interfaceOrientation.isPortrait || UIDevice.current.userInterfaceIdiom != .phone
     }
 }
-#endif // canImport(UIKit)

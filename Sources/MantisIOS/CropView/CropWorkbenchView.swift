@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class CropWorkbenchView: UIScrollView {
@@ -166,4 +165,3 @@ extension CropWorkbenchView: CropWorkbenchViewProtocol {
         setZoomScale(newZoomScale, animated: true)
     }
 }
-#endif // canImport(UIKit)

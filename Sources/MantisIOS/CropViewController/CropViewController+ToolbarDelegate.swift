@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - CropToolbarDelegate
@@ -87,4 +86,3 @@ extension CropViewController: CropToolbarDelegate {
         handleAutoAdjust(isActive: isActive)
     }
 }
-#endif // canImport(UIKit)

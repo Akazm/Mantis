@@ -23,7 +23,6 @@
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 protocol CropViewDelegate: AnyObject {
@@ -647,4 +646,3 @@ extension CropView: CropViewProtocol {
 extension UIActivityIndicatorView: ActivityIndicatorProtocol {
     
 }
-#endif // canImport(UIKit)

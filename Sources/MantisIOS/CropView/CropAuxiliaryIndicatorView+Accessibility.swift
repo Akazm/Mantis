@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 extension CropAuxiliaryIndicatorView {
@@ -116,4 +115,3 @@ extension CropAuxiliaryIndicatorView {
         }
     }
 }
-#endif // canImport(UIKit)

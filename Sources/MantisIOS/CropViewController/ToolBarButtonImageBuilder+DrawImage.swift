@@ -27,7 +27,6 @@
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 extension ToolBarButtonImageBuilder {
@@ -255,4 +254,3 @@ extension ToolBarButtonImageBuilder {
         return rotateCropperImage
     }
 }
-#endif // canImport(UIKit)

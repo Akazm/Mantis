@@ -26,7 +26,6 @@ public enum CropStatus {
     case failed
 }
 
-#if canImport(UIKit)
 /// A SwiftUI view that wraps the Mantis image cropping functionality.
 ///
 /// Use this view to present a cropping interface to the user. The cropped image,
@@ -219,5 +218,4 @@ public struct ImageCropperView: UIViewControllerRepresentable {
         context.coordinator.handleAction()
     }
 }
-#endif // canImport(UIKit)
 

@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 final class SlideDial: UIView, RotationControlViewProtocol {
@@ -271,4 +270,3 @@ extension SlideDial: SlideRulerDelegate {
         startHideTimerIfNeeded()
     }
 }
-#endif // canImport(UIKit)

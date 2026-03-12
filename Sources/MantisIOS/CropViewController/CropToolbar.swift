@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 public final class CropToolbar: UIView, CropToolbarProtocol {
@@ -710,4 +709,3 @@ extension CropToolbar {
     }
 }
 #endif
-#endif // canImport(UIKit)

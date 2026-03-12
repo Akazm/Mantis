@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 extension UIView {
@@ -28,4 +27,3 @@ extension UIView {
         return nil
     }
 }
-#endif // canImport(UIKit)

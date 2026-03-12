@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Rotation Dial Setup
@@ -375,4 +374,3 @@ extension CropView: RotationTypeSelectorDelegate {
         }
     }
 }
-#endif // canImport(UIKit)

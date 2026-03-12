@@ -7,7 +7,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 private let scaleWidth: CGFloat = 2
@@ -380,4 +379,3 @@ extension SlideRuler: UIScrollViewDelegate {
         positionInfoHelper.handleOffsetRatioWhenScrolling(scrollView)
     }
 }
-#endif // canImport(UIKit)

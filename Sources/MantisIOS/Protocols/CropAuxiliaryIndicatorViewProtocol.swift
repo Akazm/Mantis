@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 enum GridLineNumberType {
@@ -34,4 +33,3 @@ protocol CropAuxiliaryIndicatorViewProtocol: UIView {
     func handleIndicatorHandleTouched(with tappedEdge: CropViewAuxiliaryIndicatorHandleType)
     func handleEdgeUntouched()
 }
-#endif // canImport(UIKit)

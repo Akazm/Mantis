@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Public Crop API
@@ -66,4 +65,3 @@ extension CropViewController {
         cropView.update(image)
     }
 }
-#endif // canImport(UIKit)

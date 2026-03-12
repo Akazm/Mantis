@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Transform Restoration
@@ -241,4 +240,3 @@ extension CropView {
         }
     }
 }
-#endif // canImport(UIKit)

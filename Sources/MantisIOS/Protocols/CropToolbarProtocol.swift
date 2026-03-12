@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 /**
@@ -136,4 +135,3 @@ public extension CropToolbarProtocol {
     
     func handleImageNotAutoAdjustable() {}
 }
-#endif // canImport(UIKit)

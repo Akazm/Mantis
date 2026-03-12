@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Crop Output
@@ -183,4 +182,3 @@ extension CropView {
         image.getOutputCropImageSize(by: getCropInfo())
     }
 }
-#endif // canImport(UIKit)

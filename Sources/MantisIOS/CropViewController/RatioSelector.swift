@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 public final class RatioSelector: UIView {    
@@ -118,4 +117,3 @@ public final class RatioSelector: UIView {
         addRatioItems()
     }
 }
-#endif // canImport(UIKit)

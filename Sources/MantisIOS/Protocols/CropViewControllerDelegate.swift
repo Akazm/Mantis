@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 public protocol CropViewControllerDelegate: AnyObject {
@@ -54,4 +53,3 @@ public extension CropViewControllerDelegate {
     
     func cropViewController(_ cropViewController: CropViewController, didUpdateEnableStateForReset enable: Bool) {}
 }
-#endif // canImport(UIKit)

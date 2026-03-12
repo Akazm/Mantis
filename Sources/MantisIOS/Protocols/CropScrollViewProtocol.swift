@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 protocol CropWorkbenchViewProtocol: UIScrollView {
@@ -36,4 +35,3 @@ extension CropWorkbenchViewProtocol {
     func zoomIn(by zoomScaleFactor: CGFloat) {}
     func zoomOut(by zoomScaleFactor: CGFloat) {}
 }
-#endif // canImport(UIKit)

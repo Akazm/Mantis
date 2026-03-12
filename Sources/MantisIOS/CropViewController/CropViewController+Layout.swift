@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Auto Layout
@@ -82,4 +81,3 @@ extension CropViewController {
         changeStackViewOrder()
     }
 }
-#endif // canImport(UIKit)

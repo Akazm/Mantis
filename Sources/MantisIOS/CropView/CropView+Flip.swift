@@ -6,7 +6,6 @@
 //
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 // MARK: - Flip
@@ -91,4 +90,3 @@ extension CropView {
         checkImageStatusChanged()
     }
 }
-#endif // canImport(UIKit)

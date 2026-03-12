@@ -23,7 +23,6 @@
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import MantisShared
-#if canImport(UIKit)
 import UIKit
 
 open class CropViewController: UIViewController {
@@ -416,4 +415,3 @@ extension CropViewController {
         ratioPresenter?.present(by: self, in: presentSourceView)
     }
 }
-#endif // canImport(UIKit)
