@@ -5,8 +5,12 @@
 //  Created by yingtguo on 1/19/23.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 extension UIView {
     func bringSelfToFront() {
@@ -27,4 +31,4 @@ extension UIView {
         return nil
     }
 }
-#endif // canImport(UIKit)
+#endif

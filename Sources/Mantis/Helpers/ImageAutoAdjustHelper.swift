@@ -5,8 +5,12 @@
 //  Created by Yingtao Guo on 6/24/23.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import Vision
 
 class ImageAutoAdjustHelper {
@@ -22,9 +26,16 @@ class ImageAutoAdjustHelper {
     }
     
     func detectHorizon(in image: UIImage) -> Bool {
+        #if canImport(UIKit)
         guard let ciImage = CIImage(image: image) else {
             return false
         }
+        #elseif canImport(AppKit)
+        guard let tiffData = image.tiffRepresentation,
+              let ciImage = CIImage(data: tiffData) else {
+            return false
+        }
+        #endif
 
         let request = VNDetectHorizonRequest { [weak self] request, _ in
             guard let observations = request.results as? [VNHorizonObservation] else {
@@ -48,4 +59,4 @@ class ImageAutoAdjustHelper {
         }
     }
 }
-#endif // canImport(UIKit)
+#endif

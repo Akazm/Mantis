@@ -6,8 +6,12 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class CropMaskViewManager {
     private let dimmingView: CropMaskProtocol
@@ -71,4 +75,4 @@ extension CropMaskViewManager: CropMaskViewManagerProtocol {
         maskViews.forEach { $0.adaptMaskTo(match: cropRect, cropRatio: cropRatio) }
     }
 }
-#endif // canImport(UIKit)
+#endif

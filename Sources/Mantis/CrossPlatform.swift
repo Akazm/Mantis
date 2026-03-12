@@ -431,6 +431,9 @@ public class UIScreen {
     public var scale: CGFloat {
         NSScreen.main?.backingScaleFactor ?? 1.0
     }
+    public var bounds: CGRect {
+        NSScreen.main?.frame ?? CGRect(x: 0, y: 0, width: 1920, height: 1080)
+    }
 }
 
 // MARK: - UIAlertController / UIAlertAction Compatibility

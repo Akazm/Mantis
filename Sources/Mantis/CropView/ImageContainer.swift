@@ -6,18 +6,28 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class ImageContainer: UIView {
     lazy private var imageView: UIImageView = {
         let imageView = UIImageView(frame: bounds)
         addSubview(imageView)
         
+        #if canImport(UIKit)
         imageView.layer.minificationFilter = .trilinear
         imageView.accessibilityIgnoresInvertColors = true
-        imageView.accessibilityIdentifier = "SourceImage"
         imageView.contentMode = .scaleAspectFit
+        #elseif canImport(AppKit)
+        imageView.wantsLayer = true
+        imageView.layer?.minificationFilter = .trilinear
+        imageView.imageScaling = .scaleProportionallyUpOrDown
+        #endif
+        imageView.accessibilityIdentifier = "SourceImage"
         imageView.isUserInteractionEnabled = true
         
         return imageView
@@ -32,10 +42,17 @@ final class ImageContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    #if canImport(UIKit)
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = bounds
     }
+    #elseif canImport(AppKit)
+    override func layout() {
+        super.layout()
+        imageView.frame = bounds
+    }
+    #endif
 }
 
 extension ImageContainer: ImageContainerProtocol {
@@ -74,4 +91,4 @@ extension ImageContainer: ImageContainerProtocol {
         imageView.image = image
     }
 }
-#endif // canImport(UIKit)
+#endif

@@ -94,4 +94,79 @@ final class CropMaskVisualEffectView: UIVisualEffectView, CropMaskProtocol {
         }
     }
 }
-#endif // canImport(UIKit)
+#elseif canImport(AppKit)
+import AppKit
+
+final class CropMaskVisualEffectView: NSVisualEffectView, CropMaskProtocol {
+    var overLayerFillColor: NSColor = .black
+    var maskLayer: CALayer?
+    var cropShapeType: CropShapeType = .rect
+    var imageRatio: CGFloat = 1.0
+    
+    private var effectType: CropMaskVisualEffectType = .blurDark
+    
+    convenience init(cropShapeType: CropShapeType = .rect,
+                     effectType: CropMaskVisualEffectType = .blurDark) {
+        self.init(frame: .zero)
+        self.cropShapeType = cropShapeType
+        self.effectType = effectType
+        
+        wantsLayer = true
+        blendingMode = .behindWindow
+        state = .active
+        
+        applyEffect(for: effectType)
+    }
+    
+    func setMask(cropRatio: CGFloat) {
+        maskLayer?.removeFromSuperlayer()
+        maskLayer = createMaskLayer(opacity: 0.98, cropRatio: cropRatio)
+        
+        wantsLayer = true
+        let containerLayer = CALayer()
+        containerLayer.frame = self.bounds
+        containerLayer.masksToBounds = true
+        containerLayer.addSublayer(maskLayer!)
+        
+        self.layer?.mask = containerLayer
+    }
+    
+    private func applyEffect(for effectType: CropMaskVisualEffectType) {
+        switch effectType {
+        case .blurDark:
+            material = .dark
+            state = .active
+            backgroundColor = .clear
+        case .dark:
+            state = .inactive
+            backgroundColor = NSColor.black.withAlphaComponent(0.75)
+        case .light:
+            state = .inactive
+            backgroundColor = NSColor.black.withAlphaComponent(0.35)
+        case .custom(let color):
+            state = .inactive
+            backgroundColor = color
+        case .blurSystem:
+            let isDark = NSApp?.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+            if isDark {
+                material = .dark
+                state = .active
+                backgroundColor = .clear
+            } else {
+                state = .inactive
+                backgroundColor = NSColor(white: 0.95, alpha: 0.98)
+            }
+        case .default:
+            state = .inactive
+            backgroundColor = .black
+        }
+    }
+    
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        if case .blurSystem = effectType, window != nil {
+            applyEffect(for: effectType)
+        }
+    }
+}
+#endif

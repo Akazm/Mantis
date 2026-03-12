@@ -6,8 +6,12 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 private let minOverLayerUnit: CGFloat = 4
 private let initialFrameLength: CGFloat = 1000
@@ -106,7 +110,11 @@ extension CropMaskProtocol {
             innerPath = UIBezierPath(ovalIn: initialRect)
         case .roundedRect(let radiusToShortSide, _):
             let radius = min(initialRect.width, initialRect.height) * radiusToShortSide
+            #if canImport(UIKit)
             innerPath = UIBezierPath(roundedRect: initialRect, cornerRadius: radius)
+            #elseif canImport(AppKit)
+            innerPath = NSBezierPath(roundedRect: initialRect, xRadius: radius, yRadius: radius)
+            #endif
         case .diamond:
             let points = [CGPoint(x: 0.5, y: 0), CGPoint(x: 1, y: 0.5), CGPoint(x: 0.5, y: 1), CGPoint(x: 0, y: 0.5)]
             innerPath = getInnerPath(by: points)
@@ -120,7 +128,11 @@ extension CropMaskProtocol {
         }
                 
         path.append(innerPath)
+        #if canImport(UIKit)
         path.usesEvenOddFillRule = true
+        #elseif canImport(AppKit)
+        path.windingRule = .evenOdd
+        #endif
         
         let fillLayer = CAShapeLayer()
         fillLayer.path = path.cgPath
@@ -193,4 +205,4 @@ func polygonPointArray(sides: Int,
     }
     return points
 }
-#endif // canImport(UIKit)
+#endif
