@@ -26,8 +26,12 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 extension ToolBarButtonImageBuilder {
     static func drawRotateCCWImage() -> UIImage? {
@@ -254,4 +258,4 @@ extension ToolBarButtonImageBuilder {
         return rotateCropperImage
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

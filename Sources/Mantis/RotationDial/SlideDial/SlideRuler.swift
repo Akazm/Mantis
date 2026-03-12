@@ -6,8 +6,12 @@
 //  Copyright © 2019 Echo. All rights reserved.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 private let scaleWidth: CGFloat = 2
 private let pointerWidth: CGFloat = 2
@@ -379,4 +383,4 @@ extension SlideRuler: UIScrollViewDelegate {
         positionInfoHelper.handleOffsetRatioWhenScrolling(scrollView)
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

@@ -22,8 +22,12 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 open class CropViewController: UIViewController {
     public weak var delegate: CropViewControllerDelegate?
@@ -71,6 +75,7 @@ open class CropViewController: UIViewController {
         }
     }
     
+    #if canImport(UIKit)
     open override var keyCommands: [UIKeyCommand]? {
         let zoomInCommand = UIKeyCommand(input: "+", modifierFlags: .command, action: #selector(zoomIn))
         zoomInCommand.discoverabilityTitle = "Zoom In"
@@ -80,6 +85,7 @@ open class CropViewController: UIViewController {
         
         return [zoomInCommand, zoomOutCommand]
     }
+    #endif
     
     deinit {
         print("CropViewController deinit.")
@@ -109,6 +115,7 @@ open class CropViewController: UIViewController {
         modalPresentationStyle = .fullScreen
         navigationController?.modalPresentationStyle = .fullScreen
 #endif
+        #if canImport(UIKit)
         if #available(iOS 13.0, *) {
             switch config.appearanceMode {
             case .forceDark:
@@ -119,6 +126,16 @@ open class CropViewController: UIViewController {
                 overrideUserInterfaceStyle = .unspecified
             }
         }
+        #elseif canImport(AppKit)
+        switch config.appearanceMode {
+        case .forceDark:
+            view.appearance = NSAppearance(named: .darkAqua)
+        case .forceLight:
+            view.appearance = NSAppearance(named: .aqua)
+        case .system:
+            view.appearance = nil
+        }
+        #endif
         
         view.backgroundColor = AppearanceColorPreset.mainBackground(for: config.appearanceMode)
         

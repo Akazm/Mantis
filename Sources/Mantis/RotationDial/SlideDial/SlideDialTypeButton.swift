@@ -7,8 +7,12 @@
 //  The ring around the button indicates whether the value is non-zero.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 // MARK: - SlideDialTypeButton
 
@@ -178,4 +182,4 @@ final class SlideDialTypeButton: UIView {
                                                         backgroundColor: config.buttonFillColor)
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

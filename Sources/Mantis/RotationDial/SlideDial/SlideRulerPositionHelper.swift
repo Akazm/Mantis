@@ -5,8 +5,12 @@
 //  Created by Yingtao Guo on 6/14/23.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 protocol SlideRulerPositionHelper {
     var slideRuler: SlideRuler! { get set }
@@ -106,4 +110,4 @@ final class BilateralTypeSlideRulerPositionHelper: SlideRulerPositionHelper {
         slideRuler.scrollRulerView.contentOffset = CGPoint(x: offsetX, y: 0)
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

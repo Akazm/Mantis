@@ -5,8 +5,12 @@
 //  Created by iBinh on 9/27/20.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public final class RatioSelector: UIView {    
     var didGetRatio: ((Double) -> Void) = { _ in }
@@ -117,4 +121,4 @@ public final class RatioSelector: UIView {
         addRatioItems()
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

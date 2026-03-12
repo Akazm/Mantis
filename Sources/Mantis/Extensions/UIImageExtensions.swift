@@ -5,8 +5,12 @@
 //  Created by Yingtao Guo on 10/30/18.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 import CoreImage
 
 extension UIImage {
@@ -368,4 +372,4 @@ extension UIImage {
         }
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

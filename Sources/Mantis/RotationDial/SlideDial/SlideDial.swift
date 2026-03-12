@@ -5,8 +5,12 @@
 //  Created by Yingtao Guo on 6/16/23.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class SlideDial: UIView, RotationControlViewProtocol {
     var isAttachedToCropView = true
@@ -270,4 +274,4 @@ extension SlideDial: SlideRulerDelegate {
         startHideTimerIfNeeded()
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

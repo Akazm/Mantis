@@ -7,8 +7,12 @@
 //  Mimics the Apple Photos app rotation mode selector.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 protocol RotationTypeSelectorDelegate: AnyObject {
     func rotationTypeSelector(_ selector: RotationTypeSelector,
@@ -145,4 +149,4 @@ final class RotationTypeSelector: UIView {
         updateIndicatorPosition(animated: false)
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)

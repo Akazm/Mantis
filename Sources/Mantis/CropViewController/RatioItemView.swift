@@ -5,8 +5,12 @@
 //  Created by iBinh on 9/27/20.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 final class RatioItemView: UIView {
     var didGetRatio: ((RatioItemType) -> Void) = { _ in }
@@ -105,4 +109,4 @@ private class PaddingLabel: UILabel {
         }
     }
 }
-#endif // canImport(UIKit)
+#endif // canImport(UIKit) || canImport(AppKit)
