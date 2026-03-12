@@ -9,12 +9,17 @@
 //
 // Copyright Vitalii Parovishnyk. All rights reserved.
 
+import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)
 import AppKit
 #endif
 
+#if canImport(CoreGraphics)
 enum ImageProcessError: Error {
     case noColorSpace
     case failedToBuildContext(colorSpaceModel: CGColorSpaceModel,
@@ -133,3 +138,4 @@ extension CGImage {
         return bitmapInfo.rawValue
     }
 }
+#endif // canImport(CoreGraphics)

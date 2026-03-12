@@ -151,7 +151,7 @@ final class CropViewModel: CropViewModelProtocol {
     }
     
     func needCrop() -> Bool {
-        return !cropBoxOriginFrame.equalTo(cropBoxFrame)
+        return cropBoxOriginFrame != cropBoxFrame
     }
         
     func getNewCropBoxFrame(withTouchPoint touchPoint: CGPoint,

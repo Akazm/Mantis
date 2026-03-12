@@ -6,13 +6,13 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
-#if canImport(UIKit)
-import UIKit
-
 enum RatioType {
     case horizontal
     case vertical
 }
+
+#if canImport(UIKit)
+import UIKit
 
 final class RatioPresenter {
     var didGetRatio: ((Double) -> Void) = { _ in }

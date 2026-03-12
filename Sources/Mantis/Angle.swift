@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 /// Use this class to make angle calculation to be simpler
 public final class Angle: NSObject, Comparable {

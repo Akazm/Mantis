@@ -22,10 +22,14 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import Foundation
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)
 import AppKit
+#endif
+#if canImport(QuartzCore)
+import QuartzCore
 #endif
 
 struct CropState: Equatable {
@@ -136,21 +140,26 @@ public struct CropInfo {
     public var cropRegion: CropRegion
     public var horizontalSkewDegrees: CGFloat
     public var verticalSkewDegrees: CGFloat
+    #if canImport(QuartzCore)
     /// The actual CATransform3D sublayerTransform used in the preview for perspective skew.
     /// Includes perspective rotation, centering, and compensating scale.
     /// Set to CATransform3DIdentity when no skew is applied.
     public var skewSublayerTransform: CATransform3D
+    #endif
     /// The scroll view's content offset during crop (for reconstructing the view hierarchy)
     public var scrollContentOffset: CGPoint
     /// The scroll view's visible bounds size during crop
     public var scrollBoundsSize: CGSize
     /// The image container's frame in scroll content coordinates during crop
     public var imageContainerFrame: CGRect
+    #if canImport(CoreGraphics)
     /// The actual 2D transform of the scroll view (rotation + flip), used by the
     /// perspective crop path so it can invert the exact transform without
     /// reconstructing it from decomposed rotation / scale values.
     public var scrollViewTransform: CGAffineTransform
+    #endif
 
+    #if canImport(QuartzCore)
     public init(
         translation: CGPoint,
         rotation: CGFloat,
@@ -182,6 +191,65 @@ public struct CropInfo {
         self.imageContainerFrame = imageContainerFrame
         self.scrollViewTransform = scrollViewTransform
     }
+    #elseif canImport(CoreGraphics)
+    public init(
+        translation: CGPoint,
+        rotation: CGFloat,
+        scaleX: CGFloat,
+        scaleY: CGFloat,
+        cropSize: CGSize,
+        imageViewSize: CGSize,
+        cropRegion: CropRegion,
+        horizontalSkewDegrees: CGFloat = 0,
+        verticalSkewDegrees: CGFloat = 0,
+        scrollContentOffset: CGPoint = .zero,
+        scrollBoundsSize: CGSize = .zero,
+        imageContainerFrame: CGRect = .zero,
+        scrollViewTransform: CGAffineTransform = .identity
+    ) {
+        self.translation = translation
+        self.rotation = rotation
+        self.scaleX = scaleX
+        self.scaleY = scaleY
+        self.cropSize = cropSize
+        self.imageViewSize = imageViewSize
+        self.cropRegion = cropRegion
+        self.horizontalSkewDegrees = horizontalSkewDegrees
+        self.verticalSkewDegrees = verticalSkewDegrees
+        self.scrollContentOffset = scrollContentOffset
+        self.scrollBoundsSize = scrollBoundsSize
+        self.imageContainerFrame = imageContainerFrame
+        self.scrollViewTransform = scrollViewTransform
+    }
+    #else
+    public init(
+        translation: CGPoint,
+        rotation: CGFloat,
+        scaleX: CGFloat,
+        scaleY: CGFloat,
+        cropSize: CGSize,
+        imageViewSize: CGSize,
+        cropRegion: CropRegion,
+        horizontalSkewDegrees: CGFloat = 0,
+        verticalSkewDegrees: CGFloat = 0,
+        scrollContentOffset: CGPoint = .zero,
+        scrollBoundsSize: CGSize = .zero,
+        imageContainerFrame: CGRect = .zero
+    ) {
+        self.translation = translation
+        self.rotation = rotation
+        self.scaleX = scaleX
+        self.scaleY = scaleY
+        self.cropSize = cropSize
+        self.imageViewSize = imageViewSize
+        self.cropRegion = cropRegion
+        self.horizontalSkewDegrees = horizontalSkewDegrees
+        self.verticalSkewDegrees = verticalSkewDegrees
+        self.scrollContentOffset = scrollContentOffset
+        self.scrollBoundsSize = scrollBoundsSize
+        self.imageContainerFrame = imageContainerFrame
+    }
+    #endif
 }
 
 #if canImport(UIKit)

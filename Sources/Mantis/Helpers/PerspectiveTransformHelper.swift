@@ -7,8 +7,12 @@
 //
 
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
+#if canImport(QuartzCore)
 import QuartzCore
+#endif
 
 // swiftlint:disable all
 /// Represents the type of rotation/skew adjustment the user is performing
@@ -32,7 +36,10 @@ public enum RotationAdjustmentType: Int, CaseIterable {
 struct PerspectiveTransformHelper {
     /// Maximum skew angle in degrees
     static let maxSkewDegrees: CGFloat = 30.0
-    
+}
+
+#if canImport(QuartzCore)
+extension PerspectiveTransformHelper {
     /// The perspective depth factor (m34). Smaller absolute values = more dramatic perspective.
     static let perspectiveDepth: CGFloat = -1.0 / 500.0
     
@@ -301,3 +308,4 @@ struct PerspectiveTransformHelper {
     }
     
 }
+#endif // canImport(QuartzCore)

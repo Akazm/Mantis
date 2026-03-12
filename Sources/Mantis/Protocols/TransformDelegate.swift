@@ -7,6 +7,7 @@
 
 import Foundation
 
+#if canImport(ObjectiveC)
 protocol TransformDelegate: AnyObject {
     func getUndoManager() -> UndoManager
     func isUndoEnabled() -> Bool
@@ -18,3 +19,4 @@ protocol TransformDelegate: AnyObject {
     func updateEnableStateForRedo(_ enable: Bool)
     func updateEnableStateForReset(_ enable: Bool)
 }
+#endif

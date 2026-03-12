@@ -6,6 +6,10 @@
 //  Copyright © 2019 Echo. All rights reserved.
 //
 
+import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)

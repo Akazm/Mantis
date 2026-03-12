@@ -7,7 +7,9 @@
 
 import Foundation
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 typealias OverlayEdgeType = (xDelta: CGFloat, yDelta: CGFloat)
 typealias TappedEdgeCropFrameUpdateRule = [CropViewAuxiliaryIndicatorHandleType: OverlayEdgeType]

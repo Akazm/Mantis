@@ -1,5 +1,6 @@
 import Foundation
 
+#if canImport(ObjectiveC)
 class TransformStack: NSObject {
     
     static var shared: TransformStack = TransformStack()
@@ -73,3 +74,4 @@ class TransformStack: NSObject {
         }
     }
 }
+#endif // canImport(ObjectiveC)

@@ -5,6 +5,10 @@
 //  Created by yingtguo on 7/19/22.
 //
 
+import Foundation
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)

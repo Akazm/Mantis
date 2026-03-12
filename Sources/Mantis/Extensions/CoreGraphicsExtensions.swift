@@ -24,7 +24,9 @@
 
 import Foundation
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 typealias RadiansAngle = CGFloat
 
@@ -60,7 +62,9 @@ extension CGRect {
 }
 
 extension CGPoint {
+    #if canImport(CoreGraphics)
     var vector: CGVector { return CGVector(dx: x, dy: y).checked }
+    #endif
     var checked: CGPoint {
         guard !hasNaN else {
             fatalError("bad number!")
@@ -70,6 +74,7 @@ extension CGPoint {
     var hasNaN: Bool {return x.isBad || y.isBad }
 }
 
+#if canImport(CoreGraphics)
 extension CGVector {
     var hasNaN: Bool { return dx.isBad || dy.isBad }
     var checked: CGVector {
@@ -126,3 +131,4 @@ extension CGVector {
         return (vec1.normalized.cross(vec2.normalized) > 0 ?  -1 : 1) * theta(vec1.normalized, vec2: vec2.normalized).checked
     }
 }
+#endif // canImport(CoreGraphics)

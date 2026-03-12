@@ -1,5 +1,6 @@
 import Foundation
 
+#if canImport(ObjectiveC)
 enum TransformType {
     case resetTransforms
     case transform
@@ -93,3 +94,4 @@ class TransformRecord: NSObject {
 extension String {
     static let kCurrentTransformState = "CurrentTransformState"
 }
+#endif // canImport(ObjectiveC)

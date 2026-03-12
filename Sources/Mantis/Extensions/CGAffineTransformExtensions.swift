@@ -7,6 +7,9 @@
 
 import Foundation
 
+#if canImport(CoreGraphics)
+import CoreGraphics
+
 extension CGAffineTransform {
     mutating func transformed(by cropInfo: CropInfo) {
         self = translatedBy(x: cropInfo.translation.x, y: cropInfo.translation.y)
@@ -14,3 +17,4 @@ extension CGAffineTransform {
         self = scaledBy(x: cropInfo.scaleX, y: cropInfo.scaleY)
     }
 }
+#endif

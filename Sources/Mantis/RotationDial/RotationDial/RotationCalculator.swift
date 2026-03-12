@@ -8,7 +8,9 @@
 //  Copyright (c) 2014 Michael Teeuw. All rights reserved.
 //
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 final class RotationCalculator {
     

@@ -8,7 +8,9 @@
 
 import Foundation
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 struct CropBoxLockedAspectFrameUpdater {
     private var contentFrame = CGRect.zero

@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
 struct GeometryHelper {    
     static func getInscribeRect(fromOutsideRect outsideRect: CGRect, andInsideRect insideRect: CGRect) -> CGRect {
@@ -66,7 +68,9 @@ struct GeometryHelper {
         return .none
     }
     
+    #if canImport(CoreGraphics)
     static func scale(from transform: CGAffineTransform) -> Double {
         return sqrt(Double(transform.a * transform.a + transform.c * transform.c))
     }
+    #endif
 }
