@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class RatioItemView: UIView {
     var didGetRatio: ((RatioItemType) -> Void) = { _ in }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class CropMaskVisualEffectView: UIVisualEffectView, CropMaskProtocol {
     var overLayerFillColor: UIColor = .black

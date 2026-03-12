@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 public final class RatioSelector: UIView {    
     var didGetRatio: ((Double) -> Void) = { _ in }

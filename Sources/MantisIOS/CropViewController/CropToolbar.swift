@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 public final class CropToolbar: UIView, CropToolbarProtocol {
     public var config = CropToolbarConfig()

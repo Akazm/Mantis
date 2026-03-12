@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class CropWorkbenchView: UIScrollView {
     var imageContainer: ImageContainerProtocol?

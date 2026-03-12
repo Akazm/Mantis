@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 extension CropAuxiliaryIndicatorView {
     private func ifAccessibilityHelperNeeded() -> Bool {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 extension RotationDial {
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

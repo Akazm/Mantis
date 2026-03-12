@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class CropDimmingView: UIView, CropMaskProtocol {
     var overLayerFillColor: UIColor = .black    

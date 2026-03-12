@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 public protocol CropViewControllerDelegate: AnyObject {
     func cropViewControllerDidCrop(_ cropViewController: CropViewController,

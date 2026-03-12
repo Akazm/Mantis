@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 /// Groups the mutable state used to smooth and stabilize skew transforms
 /// across consecutive frames. Replacing three loose properties on CropView

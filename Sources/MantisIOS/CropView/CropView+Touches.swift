@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MantisCore
 
 extension CropView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

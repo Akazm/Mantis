@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 protocol CropWorkbenchViewProtocol: UIScrollView {
     var imageContainer: ImageContainerProtocol? { get set }

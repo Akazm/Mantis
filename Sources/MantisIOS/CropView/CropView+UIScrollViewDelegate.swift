@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MantisCore
 
 extension CropView: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

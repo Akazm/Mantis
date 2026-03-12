@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 // MARK: - Rotation Dial Setup
 extension CropView {

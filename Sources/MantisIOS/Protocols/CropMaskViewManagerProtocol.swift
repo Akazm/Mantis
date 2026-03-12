@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 protocol CropMaskViewManagerProtocol {
     func setup(in view: UIView, cropRatio: CGFloat)

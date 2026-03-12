@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 // MARK: - Type Selector Mode (Button Creation, Layout, Interaction)
 extension SlideDial {

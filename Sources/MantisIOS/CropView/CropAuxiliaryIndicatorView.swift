@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class CropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtocol {
     private var borderNormalColor = UIColor.white

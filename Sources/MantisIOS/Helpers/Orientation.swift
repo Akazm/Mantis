@@ -5,6 +5,7 @@
 //  Created by Echo on 10/10/20.
 //
 import UIKit
+import MantisCore
 
 public struct Orientation {
     static var interfaceOrientation: UIInterfaceOrientation {

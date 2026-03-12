@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import MantisCore
 
 protocol RotationTypeSelectorDelegate: AnyObject {
     func rotationTypeSelector(_ selector: RotationTypeSelector,

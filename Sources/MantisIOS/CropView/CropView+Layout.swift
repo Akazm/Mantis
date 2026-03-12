@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 // MARK: - Layout & Content Bounds
 extension CropView {

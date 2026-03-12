@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 enum GridLineNumberType {
     case none

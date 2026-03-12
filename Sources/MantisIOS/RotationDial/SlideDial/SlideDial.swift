@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class SlideDial: UIView, RotationControlViewProtocol {
     var isAttachedToCropView = true

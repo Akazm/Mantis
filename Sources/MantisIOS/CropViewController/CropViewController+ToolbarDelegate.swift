@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 // MARK: - CropToolbarDelegate
 extension CropViewController: CropToolbarDelegate {

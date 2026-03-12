@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 protocol ImageContainerProtocol: UIView {
     func contains(rect: CGRect, fromView view: UIView, tolerance: CGFloat) -> Bool

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 import CoreImage
 
 extension UIImage {

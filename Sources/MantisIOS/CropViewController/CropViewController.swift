@@ -23,6 +23,7 @@
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import UIKit
+import MantisCore
 
 open class CropViewController: UIViewController {
     public weak var delegate: CropViewControllerDelegate?

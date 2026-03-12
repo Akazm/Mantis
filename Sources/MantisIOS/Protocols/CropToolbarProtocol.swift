@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MantisCore
 
 /**
     Inside Mantis, CropViewController implements all delegate methods 

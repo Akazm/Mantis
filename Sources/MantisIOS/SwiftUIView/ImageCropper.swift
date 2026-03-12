@@ -7,6 +7,8 @@
 #if canImport(SwiftUI)
 import SwiftUI
 #endif
+import UIKit
+import MantisCore
 
 @available(iOS 13.0, *)
 public enum CropAction {

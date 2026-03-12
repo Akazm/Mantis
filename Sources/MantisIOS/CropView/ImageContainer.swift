@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class ImageContainer: UIView {
     lazy private var imageView: UIImageView = {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class RatioPresenter {
     var didGetRatio: ((Double) -> Void) = { _ in }

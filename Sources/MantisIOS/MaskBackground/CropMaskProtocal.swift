@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 private let minOverLayerUnit: CGFloat = 4
 private let initialFrameLength: CGFloat = 1000

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 final class CropMaskViewManager {
     private let dimmingView: CropMaskProtocol

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MantisCore
 
 private let scaleWidth: CGFloat = 2
 private let pointerWidth: CGFloat = 2
