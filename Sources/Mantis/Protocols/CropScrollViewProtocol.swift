@@ -5,8 +5,12 @@
 //  Created by yingtguo on 12/15/22.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 protocol CropWorkbenchViewProtocol: UIScrollView {
     var imageContainer: ImageContainerProtocol? { get set }

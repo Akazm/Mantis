@@ -5,8 +5,12 @@
 //  Created by Echo on 4/25/20.
 //
 
+#if canImport(UIKit) || canImport(AppKit)
 #if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 /**
     Inside Mantis, CropViewController implements all delegate methods 
