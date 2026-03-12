@@ -6,7 +6,11 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if __has_include(<UIKit/UIKit.h>)
 #import <UIKit/UIKit.h>
+#elif __has_include(<AppKit/AppKit.h>)
+#import <AppKit/AppKit.h>
+#endif
 
 //! Project version number for Mantis.
 FOUNDATION_EXPORT double MantisVersionNumber;
