@@ -7,7 +7,8 @@
 //  Modified by Yingtao Guo on 10/21/18 (Adapted to the newest swift)
 //  Copyright (c) 2014 Michael Teeuw. All rights reserved.
 //
-import UIKit
+import Foundation
+import CoreGraphics
 
 final class RotationCalculator {
     

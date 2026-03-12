@@ -5,6 +5,7 @@
 //  Created by Echo on 4/25/20.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 /**
@@ -134,3 +135,4 @@ public extension CropToolbarProtocol {
     
     func handleImageNotAutoAdjustable() {}
 }
+#endif // canImport(UIKit)

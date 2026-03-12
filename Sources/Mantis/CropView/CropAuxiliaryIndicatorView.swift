@@ -6,6 +6,7 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 final class CropAuxiliaryIndicatorView: UIView, CropAuxiliaryIndicatorViewProtocol {
@@ -333,3 +334,4 @@ extension CropAuxiliaryIndicatorView {
         case left
     }
 }
+#endif // canImport(UIKit)

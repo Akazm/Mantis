@@ -5,7 +5,11 @@
 //  Created by Yingtao Guo on 7/19/24.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public struct CropAuxiliaryIndicatorConfig {
     /**

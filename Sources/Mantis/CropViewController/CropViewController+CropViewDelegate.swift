@@ -5,6 +5,7 @@
 //  Extracted from CropViewController.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - CropViewDelegate
@@ -68,3 +69,4 @@ extension CropViewController: CropViewDelegate {
         currentCropState = nil
     }
 }
+#endif // canImport(UIKit)

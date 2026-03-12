@@ -5,6 +5,7 @@
 //  Extracted from SlideDial.swift — type selector mode logic
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Type Selector Mode (Button Creation, Layout, Interaction)
@@ -239,3 +240,4 @@ extension SlideDial {
         }
     }
 }
+#endif // canImport(UIKit)

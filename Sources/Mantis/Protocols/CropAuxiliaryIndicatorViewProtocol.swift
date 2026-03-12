@@ -5,6 +5,7 @@
 //  Created by yingtguo on 12/15/22.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 enum GridLineNumberType {
@@ -32,3 +33,4 @@ protocol CropAuxiliaryIndicatorViewProtocol: UIView {
     func handleIndicatorHandleTouched(with tappedEdge: CropViewAuxiliaryIndicatorHandleType)
     func handleEdgeUntouched()
 }
+#endif // canImport(UIKit)

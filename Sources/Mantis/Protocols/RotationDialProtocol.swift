@@ -5,6 +5,7 @@
 //  Created by yingtguo on 12/15/22.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public protocol RotationControlViewProtocol: UIView {
@@ -115,3 +116,4 @@ protocol RotationDialProtocol: RotationControlViewProtocol {
     func rotateDialPlate(to angle: Angle, animated: Bool)
     func getRotationAngle() -> Angle
 }
+#endif // canImport(UIKit)

@@ -5,6 +5,7 @@
 //  Created by Yingtao Guo on 6/14/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 protocol SlideRulerPositionHelper {
@@ -105,3 +106,4 @@ final class BilateralTypeSlideRulerPositionHelper: SlideRulerPositionHelper {
         slideRuler.scrollRulerView.contentOffset = CGPoint(x: offsetX, y: 0)
     }
 }
+#endif // canImport(UIKit)

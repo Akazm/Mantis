@@ -6,7 +6,8 @@
 //  Copyright © 2019 Echo. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
 
 /// Use this class to make angle calculation to be simpler
 public final class Angle: NSObject, Comparable {

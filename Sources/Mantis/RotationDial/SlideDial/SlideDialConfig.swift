@@ -5,7 +5,11 @@
 //  Created by Yingtao Guo on 6/19/23.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public enum SlideDialMode {
     /// Simple mode: a text label above the ruler showing the current angle

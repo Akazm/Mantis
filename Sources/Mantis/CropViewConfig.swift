@@ -1,4 +1,8 @@
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 public struct CropViewConfig {
     /**
@@ -82,7 +86,9 @@ public struct CropViewConfig {
         }
     }
     
+    #if canImport(UIKit)
     public var cropActivityIndicator: ActivityIndicatorProtocol?
+    #endif
     
     public var cropActivityIndicatorSize = CGSize(width: 100, height: 100)
     

@@ -5,6 +5,7 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 /// Groups the mutable state used to smooth and stabilize skew transforms
@@ -701,3 +702,4 @@ extension CropView {
         skewState.previousOptimalOffset = nil
     }
 }
+#endif // canImport(UIKit)

@@ -5,6 +5,7 @@
 //  Extracted from SlideDialTypeButton.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Icon Drawing
@@ -222,3 +223,4 @@ enum SlideDialIconDrawer {
         }
     }
 }
+#endif // canImport(UIKit)

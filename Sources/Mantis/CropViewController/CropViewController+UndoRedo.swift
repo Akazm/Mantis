@@ -5,6 +5,7 @@
 //  Extracted from CropViewController.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - TransformDelegate
@@ -68,3 +69,4 @@ extension CropViewController: TransformDelegate {
         handleTransform(with: cropState)
     }
 }
+#endif // canImport(UIKit)

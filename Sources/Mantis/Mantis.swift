@@ -22,9 +22,45 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-// MARK: - APIs
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
+
+// MARK: - Cross-platform APIs
+public func locateResourceBundle(by hostClass: AnyClass) {
+    LocalizedHelper.setBundle(Bundle(for: hostClass))
+}
+
+public struct Language {
+    var code: String
+    
+    public init(code: String) {
+        self.code = code
+    }
+}
+
+public func chooseLanguage(_ language: Language) {
+    Mantis.Config.language = language
+}
+
+public func resetLanguage() {
+    Mantis.Config.language = nil
+}
+
+// MARK: - internal section
+var localizationConfig = LocalizationConfig()
+
+// MARK: - private section
+private(set) var bundle: Bundle? = {
+    return Mantis.Config.bundle
+}()
+
+#if canImport(UIKit)
+// MARK: - UIKit APIs
 public func cropViewController(image: UIImage,
                                config: Mantis.Config = Mantis.Config(),
                                cropToolbar: CropToolbarProtocol = CropToolbar(frame: .zero),
@@ -67,37 +103,9 @@ public func setupCropViewController(_ cropViewController: Mantis.CropViewControl
     cropViewController.cropToolbar = cropToolbar
 }
 
-public func locateResourceBundle(by hostClass: AnyClass) {
-    LocalizedHelper.setBundle(Bundle(for: hostClass))
-}
-
 public func crop(image: UIImage, by cropInfo: CropInfo) -> UIImage? {
     return image.crop(by: cropInfo)
 }
-
-public struct Language {
-    var code: String
-    
-    public init(code: String) {
-        self.code = code
-    }
-}
-
-public func chooseLanguage(_ language: Language) {
-    Mantis.Config.language = language
-}
-
-public func resetLanguage() {
-    Mantis.Config.language = nil
-}
-
-// MARK: - internal section
-var localizationConfig = LocalizationConfig()
-
-// MARK: - private section
-private(set) var bundle: Bundle? = {
-    return Mantis.Config.bundle
-}()
 
 private func applyAppearanceDefaults(to config: inout Mantis.Config) {
     let mode = config.appearanceMode
@@ -242,3 +250,4 @@ private func setupRotationControlViewIfNeeded(withConfig cropViewConfig: CropVie
         }
     }
 }
+#endif // canImport(UIKit)

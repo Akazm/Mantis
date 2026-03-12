@@ -5,6 +5,7 @@
 //  Created by Yingtao Guo on 10/30/18.
 //
 
+#if canImport(UIKit)
 import UIKit
 import CoreImage
 
@@ -367,3 +368,4 @@ extension UIImage {
         }
     }
 }
+#endif // canImport(UIKit)

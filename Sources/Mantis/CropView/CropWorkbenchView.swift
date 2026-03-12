@@ -6,6 +6,7 @@
 //  Copyright © 2018 Echo Studio. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 final class CropWorkbenchView: UIScrollView {
@@ -164,3 +165,4 @@ extension CropWorkbenchView: CropWorkbenchViewProtocol {
         setZoomScale(newZoomScale, animated: true)
     }
 }
+#endif // canImport(UIKit)

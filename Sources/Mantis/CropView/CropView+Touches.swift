@@ -6,6 +6,7 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
 extension CropView {
@@ -119,3 +120,4 @@ extension CropView {
         return true
     }
 }
+#endif // canImport(UIKit)

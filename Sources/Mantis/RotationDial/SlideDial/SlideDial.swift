@@ -5,6 +5,7 @@
 //  Created by Yingtao Guo on 6/16/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 final class SlideDial: UIView, RotationControlViewProtocol {
@@ -269,3 +270,4 @@ extension SlideDial: SlideRulerDelegate {
         startHideTimerIfNeeded()
     }
 }
+#endif // canImport(UIKit)

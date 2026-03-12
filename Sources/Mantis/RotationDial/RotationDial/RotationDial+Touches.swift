@@ -6,6 +6,7 @@
 //  Copyright © 2019 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension RotationDial {
@@ -51,3 +52,4 @@ extension RotationDial {
         return true
     }
 }
+#endif // canImport(UIKit)

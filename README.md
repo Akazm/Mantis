@@ -65,7 +65,7 @@ let cropViewController = Mantis.cropViewController(image: <Your Image>, config: 
 
 ## Requirements
 * iOS 12.0+
-* MacOS 10.15+
+* macOS 13.0+ (data types and configuration; UI components require iOS/Mac Catalyst)
 * Xcode 10.0+
 
 ## Install

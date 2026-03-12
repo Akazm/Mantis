@@ -9,7 +9,11 @@
 //
 // Copyright Vitalii Parovishnyk. All rights reserved.
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 enum ImageProcessError: Error {
     case noColorSpace

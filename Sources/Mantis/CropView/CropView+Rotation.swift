@@ -5,6 +5,7 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Rotation Dial Setup
@@ -373,3 +374,4 @@ extension CropView: RotationTypeSelectorDelegate {
         }
     }
 }
+#endif // canImport(UIKit)

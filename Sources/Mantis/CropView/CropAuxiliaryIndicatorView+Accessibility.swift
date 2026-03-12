@@ -5,6 +5,7 @@
 //  Created by Yingtao Guo on 3/1/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension CropAuxiliaryIndicatorView {
@@ -114,3 +115,4 @@ extension CropAuxiliaryIndicatorView {
         }
     }
 }
+#endif // canImport(UIKit)

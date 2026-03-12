@@ -22,7 +22,11 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 struct CropState: Equatable {
     var rotationType: ImageRotationType
@@ -180,8 +184,10 @@ public struct CropInfo {
     }
 }
 
+#if canImport(UIKit)
 typealias CropOutput = (
     croppedImage: UIImage?,
     transformation: Transformation,
     cropInfo: CropInfo
 )
+#endif

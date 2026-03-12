@@ -4,6 +4,7 @@
 //
 //  Created by Echo on 10/10/20.
 //
+#if canImport(UIKit)
 import UIKit
 
 public struct Orientation {
@@ -53,3 +54,4 @@ public struct Orientation {
         interfaceOrientation.isPortrait || UIDevice.current.userInterfaceIdiom != .phone
     }
 }
+#endif // canImport(UIKit)

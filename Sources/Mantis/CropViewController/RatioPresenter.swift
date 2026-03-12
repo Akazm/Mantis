@@ -6,6 +6,7 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 enum RatioType {
@@ -93,3 +94,4 @@ public extension UIAlertController {
         }
     }
 }
+#endif // canImport(UIKit)

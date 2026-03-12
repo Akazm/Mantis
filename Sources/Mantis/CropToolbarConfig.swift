@@ -5,7 +5,16 @@
 //  Created by yingtguo on 7/19/22.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
+
+public enum CropToolbarMode {
+    case normal
+    case embedded // Without cancel and crop buttons
+}
 
 public struct CropToolbarConfig {
     public var heightForVerticalOrientation: CGFloat = 44 {

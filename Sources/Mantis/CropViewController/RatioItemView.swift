@@ -5,6 +5,7 @@
 //  Created by iBinh on 9/27/20.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 final class RatioItemView: UIView {
@@ -104,3 +105,4 @@ private class PaddingLabel: UILabel {
         }
     }
 }
+#endif // canImport(UIKit)

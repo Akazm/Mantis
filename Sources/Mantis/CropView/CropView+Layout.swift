@@ -5,6 +5,7 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Layout & Content Bounds
@@ -289,3 +290,4 @@ extension CropView {
         cropWorkbenchView.updateMinZoomScale()
     }
 }
+#endif // canImport(UIKit)

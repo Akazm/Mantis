@@ -54,6 +54,7 @@ public enum CropStatus {
 /// and `Coordinator` to manage those delegate methods.
 ///
 
+#if canImport(UIKit)
 public struct ImageCropperView: UIViewControllerRepresentable {
     let config: Mantis.Config
     
@@ -217,4 +218,5 @@ public struct ImageCropperView: UIViewControllerRepresentable {
         context.coordinator.handleAction()
     }
 }
+#endif // canImport(UIKit)
 

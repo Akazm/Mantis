@@ -6,6 +6,7 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 private let minOverLayerUnit: CGFloat = 4
@@ -192,3 +193,4 @@ func polygonPointArray(sides: Int,
     }
     return points
 }
+#endif // canImport(UIKit)

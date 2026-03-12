@@ -6,12 +6,8 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
-
-public enum CropToolbarMode {
-    case normal
-    case embedded // Without cancel and crop buttons
-}
 
 public final class CropToolbar: UIView, CropToolbarProtocol {
     public var config = CropToolbarConfig()
@@ -713,3 +709,4 @@ extension CropToolbar {
     }
 }
 #endif
+#endif // canImport(UIKit)

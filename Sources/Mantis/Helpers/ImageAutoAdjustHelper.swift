@@ -5,6 +5,7 @@
 //  Created by Yingtao Guo on 6/24/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 import Vision
 
@@ -47,3 +48,4 @@ class ImageAutoAdjustHelper {
         }
     }
 }
+#endif // canImport(UIKit)

@@ -6,7 +6,8 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
 
 struct CropBoxFreeAspectFrameUpdater {
     var minimumAspectRatio = CGFloat(0)

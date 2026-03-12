@@ -5,6 +5,7 @@
 //  Created by yingtguo on 1/19/23.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension UIView {
@@ -26,3 +27,4 @@ extension UIView {
         return nil
     }
 }
+#endif // canImport(UIKit)

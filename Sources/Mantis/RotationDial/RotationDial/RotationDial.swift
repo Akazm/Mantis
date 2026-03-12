@@ -21,6 +21,7 @@
 //  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
 //  IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#if canImport(UIKit)
 import UIKit
 
 @IBDesignable
@@ -268,3 +269,4 @@ extension RotationDial: RotationDialProtocol {
         getRotationAngle().degrees
     }
 }
+#endif // canImport(UIKit)

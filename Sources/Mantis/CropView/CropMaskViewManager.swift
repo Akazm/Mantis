@@ -6,6 +6,7 @@
 //  Copyright © 2018 Echo. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 final class CropMaskViewManager {
@@ -70,3 +71,4 @@ extension CropMaskViewManager: CropMaskViewManagerProtocol {
         maskViews.forEach { $0.adaptMaskTo(match: cropRect, cropRatio: cropRatio) }
     }
 }
+#endif // canImport(UIKit)

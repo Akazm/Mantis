@@ -5,6 +5,7 @@
 //  Extracted from CropViewController.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - CropToolbarDelegate
@@ -85,3 +86,4 @@ extension CropViewController: CropToolbarDelegate {
         handleAutoAdjust(isActive: isActive)
     }
 }
+#endif // canImport(UIKit)

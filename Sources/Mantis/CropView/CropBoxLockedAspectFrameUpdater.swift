@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import UIKit
+import Foundation
+import CoreGraphics
 
 struct CropBoxLockedAspectFrameUpdater {
     private var contentFrame = CGRect.zero

@@ -5,6 +5,7 @@
 //  Extracted from CropViewController.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Public Crop API
@@ -64,3 +65,4 @@ extension CropViewController {
         cropView.update(image)
     }
 }
+#endif // canImport(UIKit)

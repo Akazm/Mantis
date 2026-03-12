@@ -5,6 +5,7 @@
 //  Extracted from CropView.swift
 //
 
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Transform Restoration
@@ -239,3 +240,4 @@ extension CropView {
         }
     }
 }
+#endif // canImport(UIKit)

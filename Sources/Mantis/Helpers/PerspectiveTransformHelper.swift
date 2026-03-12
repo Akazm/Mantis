@@ -6,7 +6,9 @@
 //  and CIPerspectiveTransform parameters for image export.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
+import QuartzCore
 
 // swiftlint:disable all
 /// Represents the type of rotation/skew adjustment the user is performing
