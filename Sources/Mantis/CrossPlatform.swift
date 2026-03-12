@@ -144,6 +144,10 @@ extension NSImage {
                   size: NSSize(width: cgImage.width, height: cgImage.height))
     }
 
+    public convenience init?(systemName: String) {
+        self.init(systemSymbolName: systemName, accessibilityDescription: nil)
+    }
+
     public var scale: CGFloat { 1.0 }
 }
 
