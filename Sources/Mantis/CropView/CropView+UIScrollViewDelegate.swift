@@ -151,5 +151,5 @@ extension CropView {
         viewModel.setBetweenOperationStatus()
     }
 }
-#endif
+#endif // canImport(UIKit) / canImport(AppKit)
 #endif // canImport(UIKit) || canImport(AppKit)
